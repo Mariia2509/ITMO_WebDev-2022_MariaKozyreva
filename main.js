@@ -1,69 +1,78 @@
-const domInputTodoTitle = document.getElementById("inputTodoTitle");
-const domBtnCreateTodo = document.getElementById("btnCreateTodo");
-const domListOfTodos = document.getElementById("listOfTodos");
+import TodoVO from './src/model/vos/TodoVO.js';
+import { disableButtonWhenTextInvalid } from './src/model/utils/domUtils.js';
+import { isStringNotNumberAndNotEmpty } from './src/model/utils/StringUtils.js';
+import {
+  localStorageListOf,
+  localSorageSaveListofWithKey,
+} from './src/model/utils/databaseUtils.js';
+import TodoView from './src/model/utils/view/TodoView.js';
 
-domBtnCreateTodo.addEventListener("click", onBtnCreateTodoClick)
+const domInpTodoTitle = document.getElementById('inpTodoTitle');
+const domBtnCreateTodo = document.getElementById('btnCreateTodo');
+const domListOfTodos = document.getElementById('listOfTodos');
 
-class TodoVO {
-    constructor(id, title, date = new Date())
-    {
-        this.id = id;
-        this.title = title;
-        this.data = date;
-        this.completed = false;
-    }
-}
-const listOfTodos = [];
+domBtnCreateTodo.addEventListener('click', onBtnCreateTodoClick);
+domInpTodoTitle.addEventListener('keyup', onInpTodoTitleKeyup);
+domListOfTodos.addEventListener('change', onTodoListChange);
 
+const LOCAL_LIST_OF_TODOS = 'listOfTodos';
 
-domInputTodoTitle.value = "Todo text";
+const listOfTodos = localStorageListOf(LOCAL_LIST_OF_TODOS);
 
+console.log('> Initial value -> listOfTodos', listOfTodos);
 
-function onBtnCreateTodoClick (event) {
-
-    console.log("> domBtnCreateTodo -> handle(click)", event);
-    const todotitleValueFromDomInput = domInputTodoTitle.value;
-    console.log(
-        ">domBtnCreateTodo -> todoInputTodoTitleValue:",
-        todotitleValueFromDomInput
-    );
-
-    const canCreateTodo = validateTodoInputTitleValue(todotitleValueFromDomInput);
-        if (canCreateTodo) {
-            const todoVO = createTodoVO(todotitleValueFromDomInput);
-
-    listOfTodos.push(todoVO);
-
-    domListOfTodos.innerHTML = listOfTodos.map((TodoVO) => {
-        return `<li>${TodoVO.title}</li>`;
-    }).join("");
-}
-
-console.log(
-    " > dominputTodoTitle",
-    domInputTodoTitle,
-    domBtnCreateTodo,
-    domListOfTodos
+renderTodoListInContainer(listOfTodos, domListOfTodos);
+disableButtonWhenTextInvalid(
+  domBtnCreateTodo,
+  domInpTodoTitle.value,
+  isStringNotNumberAndNotEmpty
 );
-        function validateTodoInputTitleValue  (value){
-            const isInputValueString = typeof todotitleValueFromDomInput ==='string';
-            const isInputValueNotNumber = isNaN(parseInt(value))
+function onTodoListChange(event) {
+  console.log('onTodoListChange -> event:', event);
+  const target = event.target;
+  const index = target.id;
+  if (index) {
+    const indexInt = parseInt(index.trim());
+    const todoVO = listOfTodos[index];
+    console.log('>onTodoListChange -> todoVO', typeof indexInt, todoVO);
+    todoVO.isComplited = !todoVO.isComplited;
+    saveListOfTodo();
+  }
+}
 
-            const result =
-                   isInputValueString
-                && isInputValueNotNumber
-                && value.length > 0;
+function onBtnCreateTodoClick() {
+  // console.log('> domBtnCreateTodo -> handle(click)', event);
+  const todoTitleValueFromDomInput = domInpTodoTitle.value;
+  // console.log('> domBtnCreateTodo -> todoInputTitleValue:', todoTitleValueFromDomInput);
+  if (isStringNotNumberAndNotEmpty(todoTitleValueFromDomInput)) {
+    listOfTodos.push(TodoVO.createFromTitle(todoTitleValueFromDomInput));
+    saveListOfTodo();
+    renderTodoListInContainer(listOfTodos, domListOfTodos);
+    domInpTodoTitle.value = '';
+  }
+}
 
-            console.log(`validateTodoInputTitleValue -> result`, {
-                result,
-                isInputValueString,
-                isInputValueNotNumber
-            });
-            return result
-        }
+function onInpTodoTitleKeyup(event) {
+  // console.log('> onInpTodoTitleKeyup:', event);
+  const inputValue = event.currentTarget.value;
+  // console.log('> onInpTodoTitleKeyup:', inputValue);
+  disableButtonWhenTextInvalid(
+    domBtnCreateTodo,
+    inputValue,
+    isStringNotNumberAndNotEmpty
+  );
+}
 
-function createTodoVO(title) {
-    const todoId = Date.now().toString();
-    const todoVO = new TodoVO(todoId, title);
-    return todoVO;
-}}
+function renderTodoListInContainer(list, container) {
+  let output = '';
+  let todoVO;
+  for (let index in list) {
+    todoVO = list[index];
+    output += TodoView.createSimpleViewFromVO(index, todoVO);
+  }
+  container.innerHTML = output;
+}
+
+function saveListOfTodo() {
+  localSorageSaveListofWithKey(LOCAL_LIST_OF_TODOS, listOfTodos);
+}

@@ -1,5 +1,5 @@
 class TodoVO {
-  static createTodoVO(title) {
+  static createFromTitle(title) {
     const todoId = Date.now().toString();
     return new TodoVO(todoId, title);
   }

@@ -1,8 +1,8 @@
 // vite.config.js
 export default {
-    // config options
-    server: {
-        port:8888
+  // config options
 
-    }
-}
+  server: {
+    port: 8888,
+  },
+};
