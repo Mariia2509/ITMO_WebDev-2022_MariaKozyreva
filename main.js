@@ -44,11 +44,10 @@ function onBtnCreateTodoClick() {
   const todoTitleValueFromDomInput = domInpTodoTitle.value;
   // console.log('> domBtnCreateTodo -> todoInputTitleValue:', todoTitleValueFromDomInput);
   if (isStringNotNumberAndNotEmpty(todoTitleValueFromDomInput)) {
-    listOfTodos.push(TodoVO.createFromTitle(todoTitleValueFromDomInput));
+    createTodoFromTextAndAddToList(todoTitleValueFromDomInput);
     saveListOfTodo();
     renderTodoListInContainer(listOfTodos, domListOfTodos);
-    domInpTodoTitle.value = '';
-    localStorage.removeItem(LOCAL_INPUT_TEXT);
+    clearInputTextAndLocalStorage();
     disableOrEnableCreateTodoButtonOnTodoInputTitle();
   }
 }
@@ -69,6 +68,15 @@ function renderTodoListInContainer(list, container) {
     output += TodoView.createSimpleViewFromVO(index, todoVO);
   }
   container.innerHTML = output;
+}
+
+function createTodoFromTextAndAddToList(input) {
+  listOfTodos.push(TodoVO.createFromTitle(input));
+}
+
+function clearInputTextAndLocalStorage() {
+  domInpTodoTitle.value = '';
+  localStorage.removeItem(LOCAL_INPUT_TEXT);
 }
 
 function disableOrEnableCreateTodoButtonOnTodoInputTitle() {
