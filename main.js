@@ -16,26 +16,25 @@ domInpTodoTitle.addEventListener('keyup', onInpTodoTitleKeyup);
 domListOfTodos.addEventListener('change', onTodoListChange);
 
 const LOCAL_LIST_OF_TODOS = 'listOfTodos';
+const LOCAL_INPUT_TEXT = 'inputText';
 
 const listOfTodos = localStorageListOf(LOCAL_LIST_OF_TODOS);
 
 console.log('> Initial value -> listOfTodos', listOfTodos);
 
+domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
 renderTodoListInContainer(listOfTodos, domListOfTodos);
-disableButtonWhenTextInvalid(
-  domBtnCreateTodo,
-  domInpTodoTitle.value,
-  isStringNotNumberAndNotEmpty
-);
+disableOrEnableCreateTodoButtonOnTodoInputTitle();
+
 function onTodoListChange(event) {
   console.log('onTodoListChange -> event:', event);
   const target = event.target;
   const index = target.id;
-  if (index) {
+  if (index && typeof index === 'string') {
     const indexInt = parseInt(index.trim());
     const todoVO = listOfTodos[index];
     console.log('>onTodoListChange -> todoVO', typeof indexInt, todoVO);
-    todoVO.isComplited = !todoVO.isComplited;
+    todoVO.isComplited = !!target.checked;
     saveListOfTodo();
   }
 }
@@ -49,18 +48,17 @@ function onBtnCreateTodoClick() {
     saveListOfTodo();
     renderTodoListInContainer(listOfTodos, domListOfTodos);
     domInpTodoTitle.value = '';
+    localStorage.removeItem(LOCAL_INPUT_TEXT);
+    disableOrEnableCreateTodoButtonOnTodoInputTitle();
   }
 }
 
 function onInpTodoTitleKeyup(event) {
   // console.log('> onInpTodoTitleKeyup:', event);
-  const inputValue = event.currentTarget.value;
+  const inputValue = domInpTodoTitle.value;
   // console.log('> onInpTodoTitleKeyup:', inputValue);
-  disableButtonWhenTextInvalid(
-    domBtnCreateTodo,
-    inputValue,
-    isStringNotNumberAndNotEmpty
-  );
+  disableOrEnableCreateTodoButtonOnTodoInputTitle();
+  localStorage.setItem(LOCAL_INPUT_TEXT, inputValue);
 }
 
 function renderTodoListInContainer(list, container) {
@@ -71,6 +69,14 @@ function renderTodoListInContainer(list, container) {
     output += TodoView.createSimpleViewFromVO(index, todoVO);
   }
   container.innerHTML = output;
+}
+
+function disableOrEnableCreateTodoButtonOnTodoInputTitle() {
+  disableButtonWhenTextInvalid(
+    domBtnCreateTodo,
+    domInpTodoTitle.value,
+    isStringNotNumberAndNotEmpty
+  );
 }
 
 function saveListOfTodo() {
