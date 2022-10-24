@@ -15,6 +15,27 @@ domBtnCreateTodo.addEventListener('click', onBtnCreateTodoClick);
 domInpTodoTitle.addEventListener('keyup', onInpTodoTitleKeyup);
 domListOfTodos.addEventListener('change', onTodoListChange);
 
+let selectedTodoVO = null;
+
+domListOfTodos.addEventListener('click', (event) => {
+  console.log('>domListOfTodos.click -> event:', event.target);
+  if (selectedTodoVO == null) {
+    const todoID = event.target.id;
+    const todoVO = listOfTodos.find((item) => item.id === todoID);
+    console.log('>domListOfTodos.click -> todoVO:', todoVO);
+    domInpTodoTitle.value = todoVO.title;
+    domBtnCreateTodo.innerText = 'Update';
+    selectedTodoVO = todoVO;
+    event.target.style.border = '1px solid green';
+  } else {
+    resetSelectedTodo();
+    selectedTodoVO = null;
+    domBtnCreateTodo.innerText = 'Create';
+    domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
+    event.target.style.border = '';
+  }
+});
+
 const LOCAL_LIST_OF_TODOS = 'listOfTodos';
 const LOCAL_INPUT_TEXT = 'inputText';
 
@@ -43,8 +64,14 @@ function onBtnCreateTodoClick() {
   // console.log('> domBtnCreateTodo -> handle(click)', event);
   const todoTitleValueFromDomInput = domInpTodoTitle.value;
   // console.log('> domBtnCreateTodo -> todoInputTitleValue:', todoTitleValueFromDomInput);
+
   if (isStringNotNumberAndNotEmpty(todoTitleValueFromDomInput)) {
-    createTodoFromTextAndAddToList(todoTitleValueFromDomInput);
+    if (selectedTodoVO) {
+      selectedTodoVO.title = todoTitleValueFromDomInput;
+      resetSelectedTodo();
+    } else {
+      createTodoFromTextAndAddToList(todoTitleValueFromDomInput, listOfTodos);
+    }
     saveListOfTodo();
     renderTodoListInContainer(listOfTodos, domListOfTodos);
     clearInputTextAndLocalStorage();
@@ -68,6 +95,13 @@ function renderTodoListInContainer(list, container) {
     output += TodoView.createSimpleViewFromVO(index, todoVO);
   }
   container.innerHTML = output;
+}
+
+function resetSelectedTodo(target) {
+  selectedTodoVO = null;
+  domBtnCreateTodo.innerText = 'Create';
+  domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
+  target.style.border = '';
 }
 
 function createTodoFromTextAndAddToList(input) {
