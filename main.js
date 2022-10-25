@@ -14,6 +14,7 @@ const domListOfTodos = document.getElementById('listOfTodos');
 domBtnCreateTodo.addEventListener('click', onBtnCreateTodoClick);
 domInpTodoTitle.addEventListener('keyup', onInpTodoTitleKeyup);
 domListOfTodos.addEventListener('change', onTodoListChange);
+domListOfTodos.addEventListener('click', onTodoListClicked);
 
 let selectedTodoVO = null;
 
@@ -26,13 +27,13 @@ domListOfTodos.addEventListener('click', (event) => {
     domInpTodoTitle.value = todoVO.title;
     domBtnCreateTodo.innerText = 'Update';
     selectedTodoVO = todoVO;
-    event.target.style.border = '1px solid green';
+    event.target.style.backgroundColor = 'lightgray';
   } else {
     resetSelectedTodo();
     selectedTodoVO = null;
     domBtnCreateTodo.innerText = 'Create';
     domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
-    event.target.style.border = '';
+    event.target.style.bordbackgroundColorer = '';
   }
 });
 
@@ -48,7 +49,20 @@ renderTodoListInContainer(listOfTodos, domListOfTodos);
 disableOrEnableCreateTodoButtonOnTodoInputTitle();
 
 function onTodoListChange(event) {
-  console.log('onTodoListChange -> event:', event);
+  if (event.target.dataset['type'] !== TodoView.TODO_VIEW_ITEM) return;
+
+  const SELECTED_BACKGROUND = 'lightgray';
+  const isSelected = 'target.style.backgroundColor = SELECTED_BACKGROUND';
+
+  if (isSelected) {
+    target.style.backgroundColor = '';
+  } else {
+    target.style.backgroundColor = 'SELECTED_BACKGROUND';
+  }
+}
+
+function onTodoListClicked(event) {
+  if (event.target) console.log('onTodoListChange -> event:', event);
   const target = event.target;
   const index = target.id;
   if (index && typeof index === 'string') {
@@ -101,7 +115,7 @@ function resetSelectedTodo(target) {
   selectedTodoVO = null;
   domBtnCreateTodo.innerText = 'Create';
   domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
-  target.style.border = '';
+  target.style.backgroundColor = '';
 }
 
 function createTodoFromTextAndAddToList(input) {
@@ -123,4 +137,23 @@ function disableOrEnableCreateTodoButtonOnTodoInputTitle() {
 
 function saveListOfTodo() {
   localSorageSaveListofWithKey(LOCAL_LIST_OF_TODOS, listOfTodos);
+
+  // class HaveColor {
+  //   constructor(color) {
+  //     this.color = color;
+  //   }
 }
+//
+// let car = {
+//   color: 'blue',
+// };
+// let bycicle = {
+//   color: 'green',
+// };
+// function changeColor(car, newColor) {
+//   if (car.color) {
+//     car.color = newColor;
+//   }
+// }
+// console.log('car after:', car.color);
+// console.log('bicicle after: ', bycicle.color);
