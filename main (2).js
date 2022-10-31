@@ -4,7 +4,7 @@
 // import * as Example1_1 from '@/functions/example_1_1.js';
 // import * as Example2 from '@/functions/example_2.js';
 // import * as Example3 from '@/functions/example_3.js';
-import * as Example4 from '@/functions/example_4.js';
+// import * as Example4 from '@/functions/example_4.js';
 // import * as Example5 from '@/functions/example_5.js';
 // import * as Example6 from '@/functions/example_6.js';
 // import * as Example7 from '@/functions/example_7_eatBagel.js';
@@ -40,7 +40,7 @@ import * as Example4 from '@/functions/example_4.js';
 // import * as Example35 from '@/functions/example_35_closure.js';
 // import * as Example36 from '@/functions/example_36_closure.js';
 // import * as Example37 from '@/functions/example_37_closure.js';
-// import * as Example38 from '@/functions/example_38_closure.js';
+import * as Example38 from '@/functions/example_38_closure.js';
 // import * as Example39 from '@/functions/example_39_closure.js';
 // import * as Example40 from '@/functions/example_40_closure.js';
 // import * as Example41 from '@/functions/example_41_closure.js';
