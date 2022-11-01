@@ -7,12 +7,41 @@ export class Position {
 
 export class Planet {
     constructor(color, atmosphere, position, size) {
-        this.color = color;
         this.atmosphere = atmosphere;
         this.position = position;
         this.size = size;
     }
+
+        render(ctx) {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.strokeStyle = this.atmosphere;
+            // ctx.lineWidth = 10;
+            ctx.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+        }
+
+
+
+    }
+
+    export class PlanetComposable {
+    constructor(position, renderAlgorithm, moveAlgorithm) {
+        this.position = position;
+        this.renderAlgorithm = renderAlgorithm;
+        this.moveAlgorithm = moveAlgorithm;
+
+    }
+    move() {
+        if(this.moveAlgorithm){
+            this.moveAlgorithm.render()
+
+        }
+    }
+
     render(ctx) {
+        if (this.renderAlgorithm) this.renderAlgorithm.render(ctx)
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.strokeStyle = this.atmosphere;
