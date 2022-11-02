@@ -12,7 +12,7 @@ const ctx = canvas.getContext('2d');
 const sun = new Sun(new Position(canvas.width / 2, canvas.height / 2));
 const earth = new Earth(sun.position, sun.size + 100);
 const mars = new Mars(sun.position, sun.size + 250);
-const moon = new Moon(earth.position, earth.size + 35);
+const moon = new Moon(earth.position, earth.size + 30);
 
 const planets = [sun, earth, mars, moon];
 
@@ -67,10 +67,7 @@ class moveRotateAlgorithm {
 const r1 = new RenderCirclePlanetAlgorithm('blue', 'lightblue', 50);
 const r2 = new RenderSquarePlanetAlgorithm('red', 'lightblue', 30);
 
-const planetComposable = new PlanetComposable(
-    new Position(100, 100), r1,
-    new moveRotateAlgorithm (sun.position, 100, 0.05)
-);
+const planetComposable = new PlanetComposable(new Position(100, 100), r1, new moveRotateAlgorithm (150, 0.04))
 
 document.onclick = (e) =>{
   planetComposable.offset = new Position(e.pageX, e.pageY);
