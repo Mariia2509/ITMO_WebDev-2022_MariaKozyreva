@@ -7,11 +7,11 @@ export class Position {
 
 export class Planet {
     constructor(color, atmosphere, position, size) {
+        this.color = color
         this.atmosphere = atmosphere;
         this.position = position;
         this.size = size;
     }
-
         render(ctx) {
             ctx.fillStyle = this.color;
             ctx.beginPath();
@@ -21,34 +21,25 @@ export class Planet {
             ctx.stroke();
             ctx.fill();
         }
-
-
-
     }
 
     export class PlanetComposable {
     constructor(position, renderAlgorithm, moveAlgorithm) {
         this.position = position;
+        this.offset = new position(0, 0);
         this.renderAlgorithm = renderAlgorithm;
         this.moveAlgorithm = moveAlgorithm;
 
     }
     move() {
         if(this.moveAlgorithm){
-            this.moveAlgorithm.render()
-
+            this.moveAlgorithm.render(this.position, this.offset)
         }
     }
-
     render(ctx) {
-        if (this.renderAlgorithm) this.renderAlgorithm.render(ctx)
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.strokeStyle = this.atmosphere;
-        // ctx.lineWidth = 10;
-        ctx.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.fill();
+        if (this.renderAlgorithm) {
+            this.renderAlgorithm.render(ctx, this.position);
+        }
     }
 }
 
@@ -73,17 +64,12 @@ export class RotatePlanet extends Planet {
         this.position.y = this.radius * Math.cos(this.alpha) + this.center.y;
         if (this.alpha >= 2 * Math.PI) this.alpha = 0;
     }
-
 }
+
 export class Earth extends RotatePlanet {
     constructor(center, radius) {
         super('green', 'blue', 40, center, radius, 0.05);
-        this.radius = radius;
-        this.center = center;
-        this.alpha = 0;
     }
-
-
     render(ctx) {
         super.render(ctx);
         ctx.fillStyle = 'blue';
@@ -96,10 +82,6 @@ export class Earth extends RotatePlanet {
 export class Mars extends RotatePlanet {
     constructor(center, radius) {
         super('green', 'red', 20, center, radius, 0.01) ;
-        this.radius = radius;
-        this.center = center;
-        this.alpha = 0;
-
     }
 
     render(ctx) {
@@ -114,14 +96,8 @@ export class Mars extends RotatePlanet {
 export class Moon extends RotatePlanet {
     constructor(center, radius) {
         super('gray', 'red', 9, center, radius, -0.09);
-
     }
-
-
     render(ctx) {
         super.render(ctx);
-        ctx.fillStyle = 'blue';
-        ctx.beginPath();
-        ctx.fill();
     }
 }
