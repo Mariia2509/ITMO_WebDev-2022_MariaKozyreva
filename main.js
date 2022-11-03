@@ -50,8 +50,8 @@ class RenderSquarePlanetAlgorithm {
   }
 }
 
-class moveRotateAlgorithm {
-  constructor(center, radius, speed) {
+class MoveRotateAlgorithm {
+  constructor(radius, speed) {
     this.radius = radius;
     this.speed = speed;
     this.alpha = 0;
@@ -67,27 +67,70 @@ class moveRotateAlgorithm {
 const r1 = new RenderCirclePlanetAlgorithm('blue', 'lightblue', 50);
 const r2 = new RenderSquarePlanetAlgorithm('red', 'lightblue', 30);
 
-const planetComposable = new PlanetComposable(new Position(100, 100), r1, new moveRotateAlgorithm (150, 0.04))
+const planetComposable = new PlanetComposable(new Position(100, 100), r1, new MoveRotateAlgorithm ( 100, 0.05 ))
 
 document.onclick = (e) =>{
+  // console.log("jj")
   planetComposable.offset = new Position(e.pageX, e.pageY);
   if (planetComposable.renderAlgorithm instanceof RenderCirclePlanetAlgorithm) {
     planetComposable.renderAlgorithm = r2;
   } else planetComposable.renderAlgorithm = r1;
+
+  asteroid.push(createAsteroid(e.pageX, e.pageY));
 };
+
+const asteroid = [...new Array(5)].map() => createAsteroid ()
+
+
 
 function renderPlanets() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  planetComposable.render(ctx);
+
+  planetComposable.move();
+
+  renderAsteroids(canvas, asteroid);
 
   planets.forEach((item) => {
-    if (item instanceof RotatePlanet)
-    {
+    if (item instanceof RotatePlanet) {
       item.rotate();
     }
     item.render(ctx);
-});
+  });
+
+  planetComposable.render(ctx);
 
   window.requestAnimationFrame(renderPlanets);
 }
+
+  function renderAsteroids (canvas, array) {
+    const ctx = canvas.getContext('2d');
+    let counter = array.length
+    const draw = (index) => {
+      const position = array[index]
+      ctx.fillStyle = 'black'
+      ctx.fillRect(position.x, position.y, 100, 100);
+      ctx.stroke();
+      ctx.fill();
+      if (index < counter) draw(++index)
+    }
+
+    draw(0)
+
+    function randomRange(max, min) {
+      if (isNaN(max) || isNaN(min) throw new Error('>randomRange - error: "Input parameters must be a number"');
+      return Math.random() * (max - min) + min;
+    }
+
+    function createAsteroid(x, y) {
+      const borderSize = 10;
+      const randomX = x || randomRange(canvas.width - borderSize, borderSize);
+      const randomY = y || randomRange(canvas.height - borderSize, borderSize);
+      return new Position(randomX, randomY);
+
+    }
+  }
+
+  window.requestAnimationFrame(renderPlanets);
+
+

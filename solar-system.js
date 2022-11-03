@@ -26,14 +26,15 @@ export class Planet {
     export class PlanetComposable {
     constructor(position, renderAlgorithm, moveAlgorithm) {
         this.position = position;
-        this.offset = new position(0, 0);
+        this.offset = new Position(0, 0);
         this.renderAlgorithm = renderAlgorithm;
         this.moveAlgorithm = moveAlgorithm;
 
     }
     move() {
         if(this.moveAlgorithm){
-            this.moveAlgorithm.render(this.position, this.offset)
+            this.moveAlgorithm.move(
+                this.position, this.offset)
         }
     }
     render(ctx) {
