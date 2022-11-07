@@ -1,69 +1,103 @@
+import TodoVO from "./src/model/vos/TodoVO.js";
+
 const domInputTodoTitle = document.getElementById("inputTodoTitle");
 const domBtnCreateTodo = document.getElementById("btnCreateTodo");
 const domListOfTodos = document.getElementById("listOfTodos");
 
-domBtnCreateTodo.addEventListener("click", onBtnCreateTodoClick)
+domBtnCreateTodo.addEventListener("click", onBtnCreateTodoClick);
+domInputTodoTitle.addEventListener("keyup", onInputTodoTitleKeyUp);
 
-class TodoVO {
-    constructor(id, title, date = new Date())
-    {
-        this.id = id;
-        this.title = title;
-        this.data = date;
-        this.completed = false;
-    }
-}
-const listOfTodos = [];
+const LOCAL_LIST_OF_TODOS = "listOfTodos";
 
+const listOfTodos = localStorageListOf(LOCAL_LIST_OF_TODOS);
 
-domInputTodoTitle.value = "Todo text";
+renderTodoListInContainer(listOfTodos, domListOfTodos);
+disableButtonWhenTextInvalid(domBtnCreateTodo, domInputTodoTitle.value);
 
+function onBtnCreateTodoClick(event) {
+  console.log("> domBtnCreateTodo -> handle(click)", event);
+  const todotitleValueFromDomInput = domInputTodoTitle.value;
+  console.log(
+    ">domBtnCreateTodo -> todoInputTodoTitleValue:",
+    todotitleValueFromDomInput
+  );
 
-function onBtnCreateTodoClick (event) {
-
-    console.log("> domBtnCreateTodo -> handle(click)", event);
-    const todotitleValueFromDomInput = domInputTodoTitle.value;
-    console.log(
-        ">domBtnCreateTodo -> todoInputTodoTitleValue:",
-        todotitleValueFromDomInput
-    );
-
-    const canCreateTodo = validateTodoInputTitleValue(todotitleValueFromDomInput);
-        if (canCreateTodo) {
-            const todoVO = createTodoVO(todotitleValueFromDomInput);
+  const canCreateTodo = isStringNotNumberAndNotEmpty(
+    todotitleValueFromDomInput
+  );
+  if (canCreateTodo) {
+    const todoVO = TodoVO.createTodoVO(todotitleValueFromDomInput);
 
     listOfTodos.push(todoVO);
 
-    domListOfTodos.innerHTML = listOfTodos.map((TodoVO) => {
+    domListOfTodos.innerHTML = listOfTodos
+      .map((TodoVO) => {
         return `<li>${TodoVO.title}</li>`;
-    }).join("");
+      })
+      .join("");
+  }
 }
 
 console.log(
-    " > dominputTodoTitle",
-    domInputTodoTitle,
-    domBtnCreateTodo,
-    domListOfTodos
+  " > dominputTodoTitle",
+  domInputTodoTitle,
+  domBtnCreateTodo,
+  domListOfTodos
 );
-        function validateTodoInputTitleValue  (value){
-            const isInputValueString = typeof todotitleValueFromDomInput ==='string';
-            const isInputValueNotNumber = isNaN(parseInt(value))
 
-            const result =
-                   isInputValueString
-                && isInputValueNotNumber
-                && value.length > 0;
+function isStringNotNumberAndNotEmpty(value) {
+  const isInputValueString = typeof value === "string";
+  const isInputValueNotNumber = isNaN(parseInt(value));
 
-            console.log(`validateTodoInputTitleValue -> result`, {
-                result,
-                isInputValueString,
-                isInputValueNotNumber
-            });
-            return result
-        }
+  const result =
+    isInputValueString && isInputValueNotNumber && value.length > 0;
 
-function createTodoVO(title) {
-    const todoId = Date.now().toString();
-    const todoVO = new TodoVO(todoId, title);
-    return todoVO;
-}}
+  console.log(`validateTodoInputTitleValue -> result`, {
+    result,
+    isInputValueString,
+    isInputValueNotNumber,
+  });
+  return result;
+}
+
+function localStorageListOf(key) {
+  const value = localStorage.getItem(key);
+  console.log(">localStorageListOf: value =", value);
+  if (value == null) return [];
+
+  const parsedValue = JSON.parse(value);
+  const isParsedValueArray = Array.isArray(parsedValue);
+
+  return isParsedValueArray ? parsedValue : [];
+}
+
+function renderTodoListInContainer(list, container) {
+  domListOfTodos.innerHTML = listOfTodos
+    .map((TodoVO) => {
+      return `<li>${TodoVO.title}</li>`;
+    })
+    .join("");
+}
+
+function onInputTodoTitleKeyUp(event) {
+  console.log("> onInpTodoTitleKeyUp:", event);
+  const inputValue = event.currentTarget.value;
+  console.log("> onInpTodoTitleKeyUp:", inputValue);
+  disableButtonWhenTextInvalid(domBtnCreateTodo, inputValue);
+}
+
+function disableButtonWhenTextInvalid(
+  button,
+  text,
+  validateTextFunction,
+  { textWhenDisable, textWhenEnable }
+) {
+  if (!validateTextFunction) throw new Error("Validate method must be difined");
+  if (validateTextFunction(text)) {
+    button.disabled = false;
+    button.textContent = "Create";
+  } else {
+    button.disabled = true;
+    button.textContent = "Enter text";
+  }
+}
