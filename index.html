@@ -1,17 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
 <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet">
+    <title>YouTubeIcon</title>
 </head>
+  <body>
 
-<body>
-    <div id="app">
-        <input id="inpTodoTitle" />
-        <button id="btnCreateTodo">Create</button>
-        <ol  id="listOfTodos"> </ol>
-    </div>
-    <script type="module" src="main.js"></script>
-</body>
+<!--  <header class="flex flex-row justify-between items-center">-->
+<!--      <span style="content: url('https://api.iconify.design/icon-park-solid/youtube.svg?color=red&width=52');">icon</span>-->
+<!--      <div class="px-4 py-1 bg-green-200 text-green-500 text-xs font-bold rounded-2xl h-full">Free</div>-->
+<!--  </header>-->
+
+  <article class="flex flex-col w-96 bg-neutral-50 p-6 mx-auto rounded-lg mt-12">
+
+      <header class="flex flex-row justify-between items-center">
+          <span style="content: url('https://api.iconify.design/icon-park-solid/youtube.svg?color=red&width=52');">icon</span>
+          <div class="px-4 py-1 bg-green-200 text-green-500 text-xs font-bold rounded-2xl h-full">Free</div>
+      </header>
+
+      <main class="flex flex-col pt-12">
+          <section class="flex flex-col">
+              <div class="text-base">Videos</div>
+              <div class="text-3xl font-bold mt-2">Youtube</div>
+          </section>
+          <section class="flex flex-row mt-4">
+              <div class="basis-1/3">
+                  <h5 class="text-sm text-gray-700">Rating</h5>
+                  <h4 class="text-lg font-bold mt-1">5.0</h4>
+              </div>
+              <div class="basis-1/3">
+                  <h5 class="text-sm text-gray-700">Size</h5>
+                  <h4 class="text-lg font-bold mt-1">98.5 mb</h4>
+              </div>
+              <div class="basis-1/3">
+                  <h5 class="text-sm text-gray-700">Downloads</h5>
+                  <h4 class="text-lg font-bold mt-1">8.5m</h4>
+              </div>
+          </section>
+      </main>
+
+      <footer class="pt-10">
+
+          <section class="flex flex-row mt-4 space-x-4 items-center">
+                  <span style="content: url('https://api.iconify.design/icon-park/pause-one.svg?width=52');">icon</span>
+                  <h5 class=" text-sm text-gray-700"> 30 mb / sec </h5>
+
+
+          </section>
+      </footer>
+  </article>
+
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
