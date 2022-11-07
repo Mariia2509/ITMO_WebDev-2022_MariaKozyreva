@@ -17,7 +17,6 @@ domListOfTodos.addEventListener('change', onTodoListChange);
 domListOfTodos.addEventListener('click', onTodoListClicked);
 
 let selectedTodoVO = null;
-
 domListOfTodos.addEventListener('click', (event) => {
   console.log('>domListOfTodos.click -> event:', event.target);
   if (selectedTodoVO == null) {
