@@ -7,8 +7,8 @@ function localStorageListOf(key, defaultValue = []) {
   return isParsedValueArray ? parsedValue : defaultValue;
 }
 
-function localSorageSaveListofWithKey(key, list) {
+function localStorageSaveListOfWithKey(key, list) {
   localStorage.setItem(key, JSON.stringify(list));
 }
 
-export { localStorageListOf, localSorageSaveListofWithKey };
+export { localStorageListOf, localStorageSaveListOfWithKey };

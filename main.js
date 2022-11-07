@@ -3,7 +3,7 @@ import { disableButtonWhenTextInvalid } from './src/model/utils/domUtils.js';
 import { isStringNotNumberAndNotEmpty } from './src/model/utils/StringUtils.js';
 import {
   localStorageListOf,
-  localSorageSaveListofWithKey,
+  localStorageSaveListOfWithKey,
 } from './src/model/utils/databaseUtils.js';
 import TodoView from './src/model/utils/view/TodoView.js';
 
@@ -32,7 +32,7 @@ domListOfTodos.addEventListener('click', (event) => {
     selectedTodoVO = null;
     domBtnCreateTodo.innerText = 'Create';
     domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
-    event.target.style.bordbackgroundColorer = '';
+    event.target.style.backgroundColorer = '';
   }
 });
 
@@ -51,12 +51,12 @@ function onTodoListChange(event) {
   if (event.target.dataset['type'] !== TodoView.TODO_VIEW_ITEM) return;
 
   const SELECTED_BACKGROUND = 'lightgray';
-  const isSelected = 'target.style.backgroundColor = SELECTED_BACKGROUND';
+  const isSelected = 'event.target.style.backgroundColor = SELECTED_BACKGROUND';
 
   if (isSelected) {
-    target.style.backgroundColor = '';
+    event.target.style.backgroundColor = 'SELECTED_BACKGROUND';
   } else {
-    target.style.backgroundColor = 'SELECTED_BACKGROUND';
+    event.target.style.backgroundColor = '';
   }
 }
 
@@ -92,7 +92,7 @@ function onBtnCreateTodoClick() {
   }
 }
 
-function onInpTodoTitleKeyup(event) {
+function onInpTodoTitleKeyup() {
   // console.log('> onInpTodoTitleKeyup:', event);
   const inputValue = domInpTodoTitle.value;
   // console.log('> onInpTodoTitleKeyup:', inputValue);
@@ -135,24 +135,6 @@ function disableOrEnableCreateTodoButtonOnTodoInputTitle() {
 }
 
 function saveListOfTodo() {
-  localSorageSaveListofWithKey(LOCAL_LIST_OF_TODOS, listOfTodos);
+  localStorageSaveListOfWithKey(LOCAL_LIST_OF_TODOS, listOfTodos);
 
-  // class HaveColor {
-  //   constructor(color) {
-  //     this.color = color;
-  //   }
 }
-//
-// let car = {
-//   color: 'blue',
-// };
-// let bycicle = {
-//   color: 'green',
-// };
-// function changeColor(car, newColor) {
-//   if (car.color) {
-//     car.color = newColor;
-//   }
-// }
-// console.log('car after:', car.color);
-// console.log('bicicle after: ', bycicle.color);

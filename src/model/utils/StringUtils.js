@@ -7,7 +7,7 @@ function isStringNotNumberAndNotEmpty(value) {
     console.log('> isStringNotNumberAndNotEmpty -> result', {
         result,
         isInputValueString: isValueString,
-        isInputValeNotNumber: isValueNotNumber,
+        isInputValueNotNumber: isValueNotNumber,
     });
     return result;
 }

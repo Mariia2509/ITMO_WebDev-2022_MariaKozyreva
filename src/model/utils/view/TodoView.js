@@ -1,5 +1,5 @@
 class TodoView {
-  static TODO_VIEW_ITEM = 'todoitem';
+  static TODO_VIEW_ITEM = 'todoItem';
 
   static createSimpleViewFromVO(index, vo) {
     const checked = vo.isComplited ? 'checked' : '';
