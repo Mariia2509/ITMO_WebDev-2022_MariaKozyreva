@@ -10,10 +10,13 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('com1', () => {
+  cy.get('input').should('have.value', '');
+});
 //
 //
-// -- This is a child command --
+// -- This is a child command
+
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
 //
