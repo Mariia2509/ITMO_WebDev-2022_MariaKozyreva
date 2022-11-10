@@ -1,10 +1,10 @@
 import TodoVO from './src/model/vos/TodoVO.js';
-import { disableButtonWhenTextInvalid } from './src/model/utils/domUtils.js';
-import { isStringNotNumberAndNotEmpty } from './src/model/utils/StringUtils.js';
+import { disableButtonWhenTextInvalid } from '@/model/utils/domUtils.js';
+import { isStringNotNumberAndNotEmpty } from '@/model/utils/StringUtils.js';
 import {
   localStorageListOf,
   localStorageSaveListOfWithKey,
-} from './src/model/utils/ss/databaseUtils.js';
+} from '@/model/utils/databaseUtils.js';
 import TodoView from './src/model/utils/view/TodoView.js';
 
 const domInpTodoTitle = document.getElementById('inpTodoTitle');
