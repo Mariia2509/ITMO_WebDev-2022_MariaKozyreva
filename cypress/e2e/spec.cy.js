@@ -8,7 +8,7 @@ describe('spec.cy.js', () => {
   it('should add a task', () => {
     cy.get('input').type('пойти в кино').should('have.value', 'пойти в кино');
     cy.contains('Create').click();
-    cy.get('').should('have.value', 'пойти в кино');
+    cy.get('indexInt').should('have.value', 'пойти в кино');
     cy.get('input').should('have.value', '');
   });
 });
