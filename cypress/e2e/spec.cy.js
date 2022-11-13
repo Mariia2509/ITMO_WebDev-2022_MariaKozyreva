@@ -1,31 +1,50 @@
-describe('spec.cy.js', () => {
-  it('should have a form', () => {
-    cy.visit('http://localhost:8089/');
-    cy.com1();
-    cy.get('button').should('text', 'Create');
+import DOM from '../../src/constants/dom.js';
+
+const createTodo = (text) => {
+  cy.get(`#${DOM.INPUT_CREATE_TITLE}`).type(text);
+  cy.get(`#${DOM.BTN_CREATE_TODO}`).click();
+};
+
+describe('empty spec', () => {
+  before(() => {
+    cy.visit('http://localhost:8089');
   });
 
-  it('should add a task', () => {
-    const TYPE_1 = 'пойти в кино';
-    cy.get('input').type(TYPE_1).should('have.value', TYPE_1);
-    cy.contains('Create').click();
-    cy.get('#listOfTodos')
-      .children()
-      .should('have.length', 1)
-      .should('contain.text', TYPE_1);
-    cy.com1();
+  it('enter todo text as number and check disabled button', () => {
+    cy.get(`#${DOM.INPUT_CREATE_TITLE}`).type(123);
+    cy.get(`#${DOM.BTN_CREATE_TODO}`).should('be.disabled');
+    cy.get('#inpTodoTitle').clear();
+  });
 
-    const n1 = cy.get('#listOfTodos').children();
+  it('enter todo text and press create', () => {
+    const TEST_TODO_TEXT = 'New Todo';
 
-    n1.should('exist').should('have.length', 1);
-    n1.first().should('contain.text', TYPE_1);
-    cy.get('#listOfTodos > li > input[type="checkbox"]')
-      .should('exist')
-      .should('have.length', 1);
+    cy.checkInputExistAndEmpty();
 
-    it('blockButton', () => {
-      cy.get('input').type(123).should('have.value', 'be.disabled');
-      cy.contains('Create').should('have.value', 'be.disabled');
+    createTodo(TEST_TODO_TEXT);
+
+    cy.checkInputExistAndEmpty();
+
+    const todoListChildren = cy.get('#listOfTodos').children();
+
+    todoListChildren.should('exist').should('have.length', 1);
+    todoListChildren.first().should('contain.text', TEST_TODO_TEXT);
+
+    checkChildrenExist();
+    cy.reload(true);
+    checkChildrenExist();
+  });
+
+  it('create todo and validate selection rules', () => {
+    ['Todo 1', 'Todo 2'].forEach(createTodo);
+
+    const totalListChildren = cy.get(`#listOfTodos`).children();
+    const firstChild = totalListChildren.eq(0).then(($child) => {
+      cy.wrap($child).click();
+
+      const todoText = $child.text().trim();
+      cy.get(`#${DOM.LIST_OF_TODOS}`);
+      // .should('have.text', $child.text);
     });
   });
 });
