@@ -1,4 +1,5 @@
 import DOM from '../../src/constants/dom.js';
+import cypress from 'cypress';
 
 const createTodo = (text) => {
   cy.get(`#${DOM.INPUT_CREATE_TITLE}`).type(text);
@@ -38,13 +39,38 @@ describe('empty spec', () => {
   it('create todo and validate selection rules', () => {
     ['Todo 1', 'Todo 2'].forEach(createTodo);
 
-    const totalListChildren = cy.get(`#listOfTodos`).children();
-    const firstChild = totalListChildren.eq(0).then(($child) => {
-      cy.wrap($child).click();
+    cy.get(`#${DOM.INPUT_CREATE_TITLE}`).clear();
 
-      const todoText = $child.text().trim();
-      cy.get(`#${DOM.LIST_OF_TODOS}`);
-      // .should('have.text', $child.text);
-    });
+    const clickOnListItemAndCheckInputValueFromFunctionCall = (
+      listItemIndex,
+      getCompareValue
+    ) =>
+      cy
+        .get(`#${DOM.LIST_OF_TODOS}`)
+        .children()
+        .eq(listItemIndex)
+        .click()
+        .then(($child) => {
+          cy.get(`#${DOM.INPUT_CREATE_TITLE}`).should(
+            'have.value',
+            getCompareValue($child)
+          );
+        });
+
+    const getTextFromTodoItemDomElement = ($child) => $child.text().trim();
+
+    clickOnListItemAndCheckInputValueFromFunctionCall(
+      0,
+      getTextFromTodoItemDomElement
+    )
+      .then(() => {
+        clickOnListItemAndCheckInputValueFromFunctionCall(0, () => '');
+      })
+      .then(() => {
+        clickOnListItemAndCheckInputValueFromFunctionCall(
+          1,
+          getTextFromTodoItemDomElement
+        );
+      });
   });
 });
