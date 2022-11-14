@@ -1,5 +1,4 @@
 import DOM from '../../src/constants/dom.js';
-import cypress from 'cypress';
 
 const createTodo = (text) => {
   cy.get(`#${DOM.INPUT_CREATE_TITLE}`).type(text);
