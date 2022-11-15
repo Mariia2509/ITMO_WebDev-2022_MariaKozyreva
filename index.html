@@ -5,17 +5,36 @@
         content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>Invoice</title>
+  <style>
+      .wrapper {
+          width: 595px;
+          height: 842px;
+          left: 0;
+          padding: 32px;
+          gap: 32px;
+          background-color: #9ca3af;
+          /*display: grid;*/
+          /*grid-template-columns: 50% 50%;*/
+          /*grid-column-gap: 16px;*/
+
+      }
+      .wrapper>div{
+          padding: 32px
+      }
+      .wrapper>div.light{
+          padding: 1px;
+
+                 ;
+    }
+  </style>
 </head>
 <body>
-<section class='flex flex-col w-595 h-842 left-0,p-32 gap-32 bg-neutral-50'>
-  <header class='w-257.5 h-36'>
-    <div class='w-257.5
-    h-36
-    font-inter
-    non-italic
-    font-normal
-    text-3xl
-    '>№123</div>
+
+  <header class='wrapper'>
+    <div>№123</div>
+    <div class='light'></div>
+    <div>Invoice</div>
+
 
 
 
@@ -25,7 +44,6 @@
 
 
 
-</section>
 
 
 
