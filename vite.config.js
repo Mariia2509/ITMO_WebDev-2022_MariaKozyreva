@@ -14,4 +14,19 @@ export default defineConfig({
   server: {
     port: 8089, // cors: true,    // host: 'local.dev',    // https: true,
   },
+
+  build: {
+    minify: true,
+  },
+
+  // esbuild: {
+  //   drop: ['debugger'],
+  //   pure: [
+  //     'console.log',
+  //     'console.error',
+  //     'console.warn',
+  //     'console.debug',
+  //     'console.trace',
+  //   ],
+  // },
 });

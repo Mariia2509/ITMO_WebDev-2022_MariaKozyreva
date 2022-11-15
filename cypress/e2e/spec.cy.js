@@ -10,6 +10,17 @@ describe('empty spec', () => {
     cy.visit('http://localhost:8089');
   });
 
+  const checkChildrenExist = () =>
+    cy
+      .get('#listOfTodos > li > input[type="checkbox"]')
+      .should('exist')
+      .should('have.length', 1);
+
+  const createTodo = (text) => {
+    cy.get('#inpTodoTitle').type(text);
+    cy.get('#btnCreateTodo').click();
+  };
+
   it('enter todo text as number and check disabled button', () => {
     cy.get(`#${DOM.INPUT_CREATE_TITLE}`).type(123);
     cy.get(`#${DOM.BTN_CREATE_TODO}`).should('be.disabled');

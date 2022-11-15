@@ -10,8 +10,8 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('com1', () => {
-  cy.get('input').should('have.value', '');
+Cypress.Commands.add('checkInputExistAndEmpty', () => {
+  cy.get('input').should('exist').should('have.value', '');
 });
 //
 //
