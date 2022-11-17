@@ -6,10 +6,13 @@ import {
   localStorageSaveListOfWithKey,
 } from '@/model/utils/databaseUtils.js';
 import TodoView from './src/model/utils/view/TodoView.js';
+import ServerService from '@/services/serverService.js';
 
-const domInpTodoTitle = document.getElementById('inpTodoTitle');
-const domBtnCreateTodo = document.getElementById('btnCreateTodo');
-const domListOfTodos = document.getElementById('listOfTodos');
+const $ = document.getElementById.bind(document);
+
+const domInpTodoTitle = $('inpTodoTitle');
+const domBtnCreateTodo = $('btnCreateTodo');
+const domListOfTodos = $('listOfTodos');
 
 let selectedTodoVO = null;
 let selectedTodoViewItem = null;
@@ -20,28 +23,27 @@ console.log = (...args) => {
   if (import.meta.env.DEV === false) debug(...args);
 };
 
+const LOCAL_LIST_OF_TODOS = 'listOfTodos';
+const LOCAL_INPUT_TEXT = 'inputText';
+
+let listOfTodos = [];
+
+const serverService = new ServerService(import.meta.env.VITE_DATA_SERVER);
+serverService.requestTodos().then((todoList) => {
+  listOfTodos = todoList;
+  domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
+  render_TodoListInContainer(listOfTodos, domListOfTodos);
+  disableOrEnable_CreateTodoButtonOnTodoInputTitle();
+
+  $('app').style.visibility = 'visible';
+});
+
 domBtnCreateTodo.addEventListener('click', onBtnCreateTodoClick);
 domInpTodoTitle.addEventListener('keyup', onInpTodoTitleKeyup);
 domListOfTodos.addEventListener('change', onTodoListChange);
 domListOfTodos.addEventListener('click', onTodoDomItemClicked);
 
-const LOCAL_LIST_OF_TODOS = 'listOfTodos';
-const LOCAL_INPUT_TEXT = 'inputText';
-
-const listOfTodos = localStorageListOf(LOCAL_LIST_OF_TODOS);
-
 console.log('> Initial value -> listOfTodos', listOfTodos);
-
-domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
-render_TodoListInContainer(listOfTodos, domListOfTodos);
-disableOrEnable_CreateTodoButtonOnTodoInputTitle();
-
-const delay = (time) =>
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(time);
-    }, time);
-  });
 
 function onTodoDomItemClicked(event) {
   const domElement = event.target;
@@ -111,70 +113,70 @@ async function onBtnCreateTodoClick() {
       disableOrEnable_CreateTodoButtonOnTodoInputTitle();
     });
   }
+}
 
-  function onInpTodoTitleKeyup() {
-    // console.log('> onInpTodoTitleKeyup:', event);
-    const inputValue = domInpTodoTitle.value;
-    // console.log('> onInpTodoTitleKeyup:', inputValue);
-    if (hasSelectedTodo()) {
-      disableOrEnable_CreateTodoButtonOnTodoInputTitle(() => {
-        return (
-          isStringNotNumberAndNotEmpty(inputValue) &&
-          selectedTodoVO.title !== inputValue
-        );
-      });
-    } else {
-      localStorage.setItem(LOCAL_INPUT_TEXT, inputValue);
-      disableOrEnable_CreateTodoButtonOnTodoInputTitle();
-    }
-  }
-
-  function render_TodoListInContainer(listOfTodoVO, container) {
-    let output = '';
-    let todoVO;
-    for (let index in listOfTodoVO) {
-      todoVO = listOfTodoVO[index];
-      output += TodoView.createSimpleViewFromVO(index, todoVO);
-    }
-    container.innerHTML = output;
-  }
-
-  function resetSelectedTodo() {
-    console.log('> resetSelectedTodo -> selectedTodoVO:', selectedTodoVO);
-    domBtnCreateTodo.innerText = 'Create';
-    domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
-    if (selectedTodoViewItem) selectedTodoViewItem.style.backgroundColor = '';
-    selectedTodoVO = null;
-    selectedTodoViewItem = null;
+function onInpTodoTitleKeyup() {
+  // console.log('> onInpTodoTitleKeyup:', event);
+  const inputValue = domInpTodoTitle.value;
+  // console.log('> onInpTodoTitleKeyup:', inputValue);
+  if (hasSelectedTodo()) {
+    disableOrEnable_CreateTodoButtonOnTodoInputTitle(() => {
+      return (
+        isStringNotNumberAndNotEmpty(inputValue) &&
+        selectedTodoVO.title !== inputValue
+      );
+    });
+  } else {
+    localStorage.setItem(LOCAL_INPUT_TEXT, inputValue);
     disableOrEnable_CreateTodoButtonOnTodoInputTitle();
   }
+}
 
-  function create_TodoFromTextAndAddToList(input, listOfTodos) {
-    console.log('> create_TodoFromTextAndAddToList -> input =', input);
-    listOfTodos.push(TodoVO.createFromTitle(input));
+function render_TodoListInContainer(listOfTodoVO, container) {
+  let output = '';
+  let todoVO;
+  for (let index in listOfTodoVO) {
+    todoVO = listOfTodoVO[index];
+    output += TodoView.createSimpleViewFromVO(index, todoVO);
   }
+  container.innerHTML = output;
+}
 
-  function clear_InputTextAndLocalStorage() {
-    domInpTodoTitle.value = '';
-    localStorage.removeItem(LOCAL_INPUT_TEXT);
-  }
+function resetSelectedTodo() {
+  console.log('> resetSelectedTodo -> selectedTodoVO:', selectedTodoVO);
+  domBtnCreateTodo.innerText = 'Create';
+  domInpTodoTitle.value = localStorage.getItem(LOCAL_INPUT_TEXT);
+  if (selectedTodoViewItem) selectedTodoViewItem.style.backgroundColor = '';
+  selectedTodoVO = null;
+  selectedTodoViewItem = null;
+  disableOrEnable_CreateTodoButtonOnTodoInputTitle();
+}
 
-  function disableOrEnable_CreateTodoButtonOnTodoInputTitle(
-    validateInputMethod = isStringNotNumberAndNotEmpty
-  ) {
-    console.log(
-      '> disableOrEnableCreateTodoButtonOnTodoInputTitle -> domInpTodoTitle.value =',
-      domInpTodoTitle.value
-    );
-    const textToValidate = domInpTodoTitle.value;
-    disableButtonWhenTextInvalid(
-      domBtnCreateTodo,
-      textToValidate,
-      validateInputMethod
-    );
-  }
+function create_TodoFromTextAndAddToList(input, listOfTodos) {
+  console.log('> create_TodoFromTextAndAddToList -> input =', input);
+  listOfTodos.push(TodoVO.createFromTitle(input));
+}
 
-  function save_ListOfTodo() {
-    localStorageSaveListOfWithKey(LOCAL_LIST_OF_TODOS, listOfTodos);
-  }
+function clear_InputTextAndLocalStorage() {
+  domInpTodoTitle.value = '';
+  localStorage.removeItem(LOCAL_INPUT_TEXT);
+}
+
+function disableOrEnable_CreateTodoButtonOnTodoInputTitle(
+  validateInputMethod = isStringNotNumberAndNotEmpty
+) {
+  console.log(
+    '> disableOrEnableCreateTodoButtonOnTodoInputTitle -> domInpTodoTitle.value =',
+    domInpTodoTitle.value
+  );
+  const textToValidate = domInpTodoTitle.value;
+  disableButtonWhenTextInvalid(
+    domBtnCreateTodo,
+    textToValidate,
+    validateInputMethod
+  );
+}
+
+function save_ListOfTodo() {
+  localStorageSaveListOfWithKey(LOCAL_LIST_OF_TODOS, listOfTodos);
 }

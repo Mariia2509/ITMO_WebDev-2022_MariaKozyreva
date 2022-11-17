@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --mod dev",
+    "dev": "vite --mode dev",
     "build": "vite build",
     "preview": "vite preview",
     "vitestui": "vitest --ui",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "server:simple": "simple-server dist 3000",
+    "server:json": "json-server --watch db.json --port 3003 --static dist"
   },
   "devDependencies": {
     "@vitest/ui": "^0.25.1",
