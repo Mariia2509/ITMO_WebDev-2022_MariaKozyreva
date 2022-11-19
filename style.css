@@ -1,0 +1,22 @@
+.wrapper {
+    width: 595px;
+    height: 842px;
+    left: 0;
+    padding: 32px;
+    gap: 32px;
+    background-color: #e3e7ed;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 16px;
+
+}
+.wrapper>div{
+    padding: 32px
+}
+.wrapper>div.light {
+    padding: 1px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
