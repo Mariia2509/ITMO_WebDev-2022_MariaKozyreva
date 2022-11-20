@@ -20,16 +20,6 @@ body {
 
 .wrapper>div{
     font-family: 'Inter', sans-serif;
-    color: black;
-    font-style: normal;
-    font-size: 32px;
-    font-weight: bold;
-    text-decoration-style: solid;
-    padding: 32px
-}
-
-.wrapper>div.nav {
-    font-family: 'Inter', sans-serif;
     color: #888888;
     font-style: normal;
     font-size: 32px;
@@ -37,6 +27,15 @@ body {
 
 }
 
+.wrapper>span{
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-style: normal;
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration-style: solid;
+
+}
 
 
 
