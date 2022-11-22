@@ -5,4 +5,13 @@ const delay = (time) =>
     }, time);
   });
 
-export { delay };
+function wrapDebugConsole() {
+  const debug = console.log;
+  console.log = (...args) => {
+    if (import.meta.env.DEV === false) debug(...args);
+  };
+}
+
+const $ = document.getElementById.bind(document);
+
+export { delay, wrapDebugConsole, $ };

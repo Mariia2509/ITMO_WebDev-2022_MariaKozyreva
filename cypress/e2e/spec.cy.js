@@ -1,7 +1,7 @@
 import DOM from '../../src/constants/dom.js';
 
 const createTodo = (text) => {
-  cy.get(`#${DOM.INPUT_CREATE_TITLE}`).type(text);
+  cy.get(`#${DOM.INP_TODO_TITLE}`).type(text);
   cy.get(`#${DOM.BTN_CREATE_TODO}`).click();
 };
 
@@ -11,7 +11,7 @@ describe('empty spec', () => {
   });
 
   it('enter todo text as number and check disabled button', () => {
-    cy.get(`#${DOM.INPUT_CREATE_TITLE}`).type(123);
+    cy.get(`#${DOM.INP_TODO_TITLE}`).type(123);
     cy.get(`#${DOM.BTN_CREATE_TODO}`).should('be.disabled');
     cy.get('#inpTodoTitle').clear();
   });
@@ -38,7 +38,7 @@ describe('empty spec', () => {
   it('create todo and validate selection rules', () => {
     ['Todo 1', 'Todo 2'].forEach(createTodo);
 
-    cy.get(`#${DOM.INPUT_CREATE_TITLE}`).clear();
+    cy.get(`#${DOM.INP_TODO_TITLE}`).clear();
 
     const clickOnListItemAndCheckInputValueFromFunctionCall = (
       listItemIndex,
@@ -50,7 +50,7 @@ describe('empty spec', () => {
         .eq(listItemIndex)
         .click()
         .then(($child) => {
-          cy.get(`#${DOM.INPUT_CREATE_TITLE}`).should(
+          cy.get(`#${DOM.INP_TODO_TITLE}`).should(
             'have.value',
             getCompareValue($child)
           );
