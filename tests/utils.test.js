@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { isStringNotNumberAndNotEmpty } from '@/model/utils/StringUtils.js';
+import { isStringNotNumberAndNotEmpty } from '@/utils/StringUtils.js';
 
 describe('Utils test', () => {
   test('stringUtils -> isStringNotNumberAndNotEmpty', () => {
