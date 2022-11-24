@@ -10,7 +10,7 @@
     "vitestui": "vitest --ui",
     "cypress": "cypress open",
     "server:simple": "simple-server dist 3000",
-    "server:json": "json-server --watch db.json --port 3003 --static dist"
+    "server:json": "json-server --watch db.json --port 3003 --static dist --delay 1000"
   },
   "devDependencies": {
     "@vitest/ui": "^0.25.1",

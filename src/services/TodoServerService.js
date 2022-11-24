@@ -2,7 +2,10 @@ const DATA_TODO_LIST_RESOURCE = 'todos';
 
 function processResponse(response, methodName) {
   console.log(`> ServerService -> ${methodName}: response.data =`, response);
-  if (response.ok === false) throw new Error(`ServerService - ${methodName}: error(${response.statusText})`);
+  if (response.ok === false)
+    throw new Error(
+      `ServerService - ${methodName}: error(${response.statusText})`
+    );
   return response.json();
 }
 
@@ -22,7 +25,10 @@ class TodoServerService {
       const listOfTodos = await fetch(this.path, {
         method: 'GET',
       }).then((response) => processResponse(response, 'requestTodos'));
-      console.log(`> ServerService -> requestTodos: listOfTodos =`, listOfTodos);
+      console.log(
+        `> ServerService -> requestTodos: listOfTodos =`,
+        listOfTodos
+      );
       return listOfTodos;
     } catch (error) {
       console.log(`> ServerService -> requestTodos: error = ${error}`);
@@ -40,6 +46,17 @@ class TodoServerService {
       .then((response) => processResponse(response, 'saveTodo'))
       .catch((error) => {
         console.log(`> ServerService -> saveTodo: error = ${error}`);
+        throw error;
+      });
+  }
+
+  async deleteTodo(id) {
+    return fetch(`${this.path}/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => processResponse(response, 'delete'))
+      .catch((error) => {
+        console.log(`> ServerService -> delete: error = ${error}`);
         throw error;
       });
   }
