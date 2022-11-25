@@ -86,4 +86,20 @@ section.results {
 footer {
     grid-area: footer;
     background-color: lightgoldenrodyellow;
+    width: 258px;
+    height: 114px;
+    color: black;
 }
+
+footer .IBAN {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+footer .Text {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+}
+
