@@ -84,7 +84,7 @@ async function onTodoDomItemClicked(event) {
     $(DOM.BTN_CREATE_TODO).innerText = 'Update';
     $(DOM.INP_TODO_TITLE).value = currentTodoVO.title;
     selectedTodoViewItem.style.backgroundColor = 'lightgray';
-    onInpTodoTitleKeyup();
+    await onInpTodoTitleKeyup();
   }
 }
 
@@ -103,7 +103,7 @@ function onTodoListChange(event) {
 
 async function onBtnCreateTodoClick(event) {
   // console.log('> $(DOM.BTN_CREATE_TODO) -> handle(click)', this.attributes);
-  await createTodoWhenPossible();
+  await createTodoWhenPossible(event);
 }
 
 async function onInpTodoTitleKeyup(event) {
