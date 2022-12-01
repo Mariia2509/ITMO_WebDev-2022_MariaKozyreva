@@ -4,11 +4,29 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "vitestui": "vitest --ui",
+    "cypress": "cypress open",
+    "server:simple": "simple-server dist 3000",
+    "server:json": "json-server --watch db.json --port 3003 --static dist"
   },
   "devDependencies": {
-    "vite": "^3.1.0"
+    "@vitest/ui": "^0.25.1",
+    "cypress": "^10.11.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
+    "start-server-and-test": "^1.14.0",
+    "vite": "^3.1.0",
+    "vitest": "^0.25.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "length": 120
+  },
+  "dependencies": {
+    "esbuild-linux-64": "^0.15.16"
   }
 }
