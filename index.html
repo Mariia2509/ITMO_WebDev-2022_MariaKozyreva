@@ -17,7 +17,8 @@
 
   <header>
     <div class="number">
-      № 123
+      №
+      <input type="text" id="number-invoice-input">
     </div>
     <div class="title">
       Invoice
@@ -28,19 +29,25 @@
   <section class="address">address</section>
   <section class="table">
     <div>row</div>
-    <div>row</div>
+
+
   </section>
-  <section class="toolbar">toolbar</section>
+  <section class="toolbar">
+    <div class="button" id="add-button">+</div>
+  </section>
   <section class="subtotal">subtotal</section>
   <section class="results">results</section>
 
   <footer>
-    <section>IBAN</section>
-    <section>
-        <div><br>This invoice is to be paid by wire transfer only, unless agreed otherwise and must be paid before the date due specified above.</div>
+    <div>
+      IBAN
+      <input type="text" id="number-iban-input">
+    </div>
+    <div class="text">
+        <div ><br>This invoice is to be paid by wire transfer only, unless agreed otherwise and must be paid before the date due specified above.</div>
         <div><br>Thank you,</div>
         <div>Your name</div>
-    </section>
+    </div>
   </footer>
 
 </article>
