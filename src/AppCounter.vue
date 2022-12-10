@@ -1,6 +1,6 @@
 <template>
   <h1>App Counter</h1>
-    <CounterValue v-for="fruits in [{ index:1, text:'Clicked'},]" :title='fruits.text' :value ='counter' :key='fruits.index'/>
+    <CounterValue class='counter' v-for="fruits in [{ index:1, text:'Clicked'},]" :title='fruits.text' :value ='counter' :key='fruits.index'/>
 
   <button v-on:click="onPlus">+</button>
   <button v-if='canRenderMinusVisible' @click='onMinus'>-</button>
@@ -33,11 +33,9 @@ export default {
 
 }
 </script>
-<!--<style scoped>-->
-<!-- p.value{-->
-<!--   color: red;-->
-<!--   font-size: 2rem;-->
-<!--   font-weight: normal;-->
-<!-- }-->
-<!--</style>-->
+<style lang='scss' scoped>
+ .counter {
+
+ }
+</style>
 
