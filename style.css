@@ -87,8 +87,10 @@ section.toolbar .button {
 section.subtotal {
     grid-area: subtotal;
     background-color: lightgreen;
+    width: 14px;
+    height: 120px;
+    font-size: 10px;
 }
-
 section.results {
     grid-area: results;
     background-color: lightgray;
