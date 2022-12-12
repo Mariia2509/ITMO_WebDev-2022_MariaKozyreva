@@ -16,7 +16,7 @@ const titleText = ref(getLocalText());
 const state = reactive({
   todos: JSON.parse(localStorage.getItem(LOCAL_KEY_TODOS)) || [],
   selected: null,
-  isLoading: false
+  isLoading: true
 })
 const v$ = useVuelidate({
   inputText: { required, alpha, minLength: minLength(1) }
