@@ -1,84 +1,141 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch, computed } from "vue";
-import useVuelidate from "@vuelidate/core";
-import { alpha, minLength, required } from "@vuelidate/validators";
-import TodoVO from "@/model/vos/TodoVO.ts";
-import Spinner from "@/components/Spinner.vue";
+import { RouterLink } from 'vue-router';
+import { onMounted, watch, computed, ref } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { alpha, helpers, minLength, required, and, or } from '@vuelidate/validators';
+import Spinner from '@/components/Spinner.vue';
+import type { ITodoVO } from '@/model/vos/TodoVO';
+import { useTodosStore } from '@/stores/todos';
+import { storeToRefs } from 'pinia';
 
-const LOCAL_KEY_TODOS = 'todos'
-const LOCAL_KEY_TEXT = 'text'
+const LOCAL_KEY_TEXT = 'text';
 
 const getLocalText = () => localStorage.getItem(LOCAL_KEY_TEXT) || '';
-const getTodoIndex = (todo) => state.todos.indexOf(todo);
+const setInputTitleText = (text: string) => (inputTitleText.value = text);
+const setDomButtonCreateText = (text: string) => ((domButtonCreate.value! as HTMLElement).innerText = text);
 
-const domBtnAction = ref(null);
-const titleText = ref(getLocalText());
-const state = reactive({
-  todos: JSON.parse(localStorage.getItem(LOCAL_KEY_TODOS)) || [],
-  selected: null,
-  isLoading: true
-})
-const v$ = useVuelidate({
-  inputText: { required, alpha, minLength: minLength(1) }
-}, { inputText: titleText });
+const domButtonCreate = ref(null);
+const inputTitleText = ref(getLocalText());
 
-const validate = () => v$.value.$validate();
+const store = useTodosStore();
 
-const isTodoSelected = (todo) => state.selected === todo;
-const isSelectedActive = () => !!state.selected;
-const isTodoNotSelected = () => !isSelectedActive();
+const { todos, isLoading } = storeToRefs(store);
+const { checkTodoSelected } = store;
+
+const cyrillicValidator = helpers.regex(/^[А-Яа-яёЁ]+$/i);
+const validator = useVuelidate(
+  {
+    inputTitleText: {
+      isValid: and(required, minLength(3), or(alpha, cyrillicValidator)),
+    },
+  },
+  { inputTitleText },
+);
+
+const validate = () => validator.value.$validate();
+
 const isActionButtonDisabled = computed(() => {
-  return v$.value.inputText.$error || (isSelectedActive() && titleText.value === state.selected.title)
-})
+  return validator.value.inputTitleText.$error || store.compareTextWithSelectedTodoTitle(inputTitleText.value);
+});
 
-const onTodoListItemClicked = (todo) => {
+const resetInputText = () => setInputTitleText('');
+
+const selectTodo = (todo: ITodoVO) => {
+  store.setupSelectedTodo(todo);
+  setInputTitleText(todo.title);
+  setDomButtonCreateText('Update');
+};
+
+const deselectTodo = () => {
+  store.setupSelectedTodo(null);
+  setInputTitleText(getLocalText());
+  setDomButtonCreateText('Create');
+};
+
+const onTodoListItemClicked = (todo: ITodoVO) => {
   console.log('> onTodoListItemClicked', todo);
-  const isSelected = isTodoSelected(todo);
-  state.selected = isSelected ? null : todo;
-  titleText.value = isSelected ? getLocalText() : todo.title;
-  (domBtnAction.value as HTMLElement).innerText = isSelected ? 'Create' : 'Update';
-}
-const onDeleteTodo = (todo) => {
-  console.log('> onTodoListItemClicked', todo);
-  if (isTodoSelected(todo)) onTodoListItemClicked(todo);
-  state.todos.splice(getTodoIndex(todo), 1);
-}
-const onCreateButtonClick = () => {
-  console.log('> onCreateButtonClick', state);
-  if (isSelectedActive()) {
-    state.selected.title = titleText.value;
-    state.todos.splice(getTodoIndex(state.selected), 1, state.selected);
-    onTodoListItemClicked(state.selected);
+  if (store.checkTodoSelected(todo)) {
+    deselectTodo();
   } else {
-    state.todos.push(TodoVO.createFromTitle(titleText.value));
-    titleText.value = '';
+    selectTodo(todo);
+  }
+};
+const onDeleteTodo = (todo: ITodoVO) => {
+  console.log('> onTodoListItemClicked', todo);
+  if (store.checkTodoSelected(todo)) {
+    deselectTodo();
+  }
+  store.deleteTodo(todo);
+};
+const onCreateButtonClick = () => {
+  console.log('> onCreateButtonClick', store.hasSelectedTodo);
+  if (store.hasSelectedTodo) {
+    store.updateSelectedTodoTitle(inputTitleText.value);
+    deselectTodo();
+  } else {
+    store.createTodoFromText(inputTitleText.value);
+    resetInputText();
   }
   validate();
-}
+};
 
-watch(state.todos, (value) => localStorage.setItem(LOCAL_KEY_TODOS, JSON.stringify(value)))
-watch(titleText, (value) => isTodoNotSelected() && localStorage.setItem(LOCAL_KEY_TEXT, value))
-onMounted(() => (validate(), setTimeout(() => { state.isLoading = false }, 1000)));
+const getTodoRoute = (index: number) => `/todo/${index}`;
 
+watch(inputTitleText, (value) => {
+  console.log('input', inputTitleText);
+  if (!store.hasSelectedTodo) {
+    localStorage.setItem(LOCAL_KEY_TEXT, value);
+  }
+});
+onMounted(() => validate());
 </script>
-
 <template>
-  <Spinner v-if="state.isLoading"/>
+  <Spinner v-if="isLoading" />
   <main v-else>
-    <input v-model="titleText" @keyup.enter="onCreateButtonClick" @keyup="validate"/>
-    <button ref="domBtnAction" @click="onCreateButtonClick" :disabled="isActionButtonDisabled">Create</button>
-    <ol>
-      <li v-for="todo in state.todos"
-          @click.self="onTodoListItemClicked(todo)"
-          :class="{ selected: state.selected === todo }"
-          :key="todo.id">
-        {{ todo.title }}
-        <button @click.once="onDeleteTodo(todo)" class="delete">x</button>
-      </li>
-    </ol>
+    <Transition appear name="fade">
+      <input class="todo-input" v-model="inputTitleText" @keyup.enter="onCreateButtonClick" @keyup="validate" />
+    </Transition>
+    <button ref="domButtonCreate" @click="onCreateButtonClick" :disabled="isActionButtonDisabled">Create</button>
+    <vs-list>
+      <vs-list-item
+        v-for="(todo, index) in todos"
+        @click.self="onTodoListItemClicked(todo)"
+        :class="{ selected: checkTodoSelected(todo) }"
+        :key="todo.id"
+        :title="todo.title"
+      >
+        <vs-row vs-align="center" class="todo-item">
+          <RouterLink :to="getTodoRoute(index)" class="open-todo-link">Open</RouterLink>
+          <vs-button color="danger" type="flat" @click="onDeleteTodo(todo)">Delete</vs-button>
+          <vs-switch color="success" v-model="todo.isCompleted" />
+        </vs-row>
+      </vs-list-item>
+    </vs-list>
   </main>
 </template>
 <style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.todo-item {
+  *:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}
+.open-todo-link {
+  transition: all 0.1s ease-out;
+  font-size: 1em;
+  &:hover {
+    font-size: 1.2em;
+  }
+}
 .selected {
   background-color: #f1f1f1;
   outline: 1px solid #ccc;
@@ -106,5 +163,4 @@ li {
     }
   }
 }
-
 </style>

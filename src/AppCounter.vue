@@ -1,11 +1,6 @@
 <template>
   <h1 ref="header">App Counter</h1>
-  <input v-model="inputText" />
-  <button @click="onButtonClick" :disabled="isAllowedToSave">Add</button>
-  <h2 v-for="(todo, index) in list" :key="index">
-    {{ todo }}
-    <button @click="onDelete(index)">x</button>
-  </h2>
+  <div>{{ isShown ? 'More than 10' : 'Less than 10' }}</div>
   <CounterValue
     v-if="isShown"
     class="counter"
@@ -14,8 +9,8 @@
     :value="counter"
     :key="obj.index"
   />
-  <button v-on:click="onPlus">+</button>
-  <button v-if="canRenderMinusButton" @click="onMinus">-</button>
+  <vs-button style="margin-right: 0.5rem" color="warning" v-on:click="onPlus">+</vs-button>
+  <vs-button color="warning" v-if="canRenderMinusButton" @click="onMinus">-</vs-button>
 </template>
 <script>
 import CounterValue from './components/CounterValue.vue';
@@ -29,20 +24,17 @@ const save = (key, value) => localStorage.setItem(key, value);
 let counterWatcher = null;
 
 export default {
+  name: 'AppCounter',
   components: {
     CounterValue,
   },
   data() {
     return {
       counter: 0,
-      inputText: '',
-      list: [],
     };
   },
   created() {
     console.log('> created: ', this.counter);
-    this.list = JSON.parse(localStorage.getItem(LOCAL_KEY_LIST)) || [];
-    this.inputText = localStorage.getItem(LOCAL_KEY_TEXT) || '';
     this.counter = localStorage.getItem(LOCAL_KEY_COUNTER) || 0;
     counterWatcher = this.$watch(
       () => this.counter,
@@ -51,26 +43,13 @@ export default {
         save(LOCAL_KEY_COUNTER, newValue);
       },
     );
-    this.$watch(
-      () => this.inputText,
-      (value) => {
-        save(LOCAL_KEY_TEXT, value);
-      },
-    );
-    this.$watch(
-      () => this.list.length,
-      (value) => {
-        console.log('> watch: list =', value);
-        save(LOCAL_KEY_LIST, JSON.stringify(this.list));
-      },
-    );
   },
   mounted() {
     console.log('> mounted: ', this.counter);
   },
   computed: {
     isShown() {
-      return this.counter < 15;
+      return this.counter < 25;
     },
     canRenderMinusButton() {
       return this.counter > 0;
@@ -80,16 +59,10 @@ export default {
     },
   },
   methods: {
-    onDelete(index) {
-      this.list.splice(index, 1);
-    },
-    onButtonClick() {
-      this.list.push(this.inputText);
-      this.inputText = '';
-    },
     onPlus() {
       this.counter++;
       console.log('> Counter -> onPlus:', this.counter, this);
+      if (this.counter === 15) this.$router.push('/about');
     },
     onMinus() {
       this.counter--;

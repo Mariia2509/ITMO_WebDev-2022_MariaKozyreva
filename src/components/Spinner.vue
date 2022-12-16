@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 <template>
   <div class="loading">
     <div class="spinner"></div>
@@ -36,8 +35,8 @@
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  border-top-color: #19AEE6;
-  border-right-color: #19AEE6;
+  border-top-color: #19aee6;
+  border-right-color: #19aee6;
   -moz-animation: rotate 0.5s linear infinite;
   -webkit-animation: rotate 0.5s linear infinite;
   animation: rotate 0.5s linear infinite;
@@ -91,5 +90,4 @@
     transform: rotateZ(0deg);
   }
 }
-
 </style>
