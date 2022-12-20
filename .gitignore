@@ -1,2 +1,4 @@
 .env
 /node_modules
+/Vue-ProductList/bookStore/node_modules
+Vue-ProductList/node_modules
