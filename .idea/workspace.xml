@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6fc94eba-93a9-464b-b6b9-5bb6dbda8e70" name="Changes" comment="save" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="lessons/lesson35-docker-continue" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2J3LBfSMr9qBvzfvXLJA4ZspC1q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Mariy/Documents",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "C:\\Users\\Mariy\\Documents\\ITMO_WebDev-2022_MariaKozyreva\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6fc94eba-93a9-464b-b6b9-5bb6dbda8e70" name="Changes" comment="save" />
+      <created>1671301693404</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671301693404</updated>
+      <workItem from="1671301695731" duration="779000" />
+      <workItem from="1671303769108" duration="9331000" />
+      <workItem from="1671360383226" duration="5010000" />
+      <workItem from="1671387091220" duration="5821000" />
+      <workItem from="1671550560596" duration="9731000" />
+      <workItem from="1671644408713" duration="1272000" />
+      <workItem from="1671723448150" duration="1479000" />
+      <workItem from="1671725039567" duration="4464000" />
+    </task>
+    <task id="LOCAL-00001" summary="vue product list">
+      <created>1671304692579</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671304692579</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Запустить проект на локальном сервере.">
+      <created>1671306087840</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671306087840</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Установить ui anu и sass">
+      <created>1671308957716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671308957716</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Сделать заголовок">
+      <created>1671313342056</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671313342056</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Установить Prettier">
+      <created>1671313388065</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671313388065</updated>
+    </task>
+    <task id="LOCAL-00006" summary="save">
+      <created>1671364420892</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671364420892</updated>
+    </task>
+    <task id="LOCAL-00007" summary="save">
+      <created>1671364459964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671364459964</updated>
+    </task>
+    <task id="LOCAL-00008" summary="save2">
+      <created>1671366450467</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671366450467</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Добавить карточки товаров">
+      <created>1671393444587</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671393444587</updated>
+    </task>
+    <task id="LOCAL-00010" summary="save">
+      <created>1671558105394</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671558105394</updated>
+    </task>
+    <task id="LOCAL-00011" summary="save1">
+      <created>1671563461170</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671563461170</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="lessons/lesson35-docker-continue" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="vue product list" />
+    <MESSAGE value="Запустить проект на локальном сервере." />
+    <MESSAGE value="Установить ui anu и sass" />
+    <MESSAGE value="Сделать заголовок" />
+    <MESSAGE value="Установить Prettier" />
+    <MESSAGE value="save2" />
+    <MESSAGE value="Добавить карточки товаров" />
+    <MESSAGE value="save" />
+    <MESSAGE value="save1" />
+    <option name="LAST_COMMIT_MESSAGE" value="save1" />
+  </component>
+</project>
