@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="Создать формы логин/пароль.">
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="Создать формы на странице регистрации.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/UserLoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/UserLoginPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,12 @@
       <workItem from="1671734304927" duration="1473000" />
       <workItem from="1671965381405" duration="1857000" />
       <workItem from="1672168097018" duration="5101000" />
-      <workItem from="1672250910603" duration="4830000" />
+      <workItem from="1672250910603" duration="5027000" />
+      <workItem from="1672256086266" duration="263000" />
+      <workItem from="1672256467847" duration="15000" />
+      <workItem from="1672329073515" duration="3012000" />
+      <workItem from="1672653146663" duration="577000" />
+      <workItem from="1673003803727" duration="1092000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -69,7 +75,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672253860273</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Создать формы на странице регистрации.">
+      <created>1672255931761</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672255931761</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Создать формы на странице регистрации.">
+      <created>1672255961107</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672255961107</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +109,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="save_login-register" />
     <MESSAGE value="Создать формы логин/пароль." />
-    <option name="LAST_COMMIT_MESSAGE" value="Создать формы логин/пароль." />
+    <MESSAGE value="Создать формы на странице регистрации." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создать формы на странице регистрации." />
   </component>
 </project>

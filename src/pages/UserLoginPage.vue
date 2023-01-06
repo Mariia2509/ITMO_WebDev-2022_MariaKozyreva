@@ -14,6 +14,10 @@ const onLoginClick = () => {
   <h1>Login</h1>
   <hr />
 
+
+  
+
+
   <div>
     <label for="username">Username: </label>
     <br>
@@ -24,7 +28,7 @@ const onLoginClick = () => {
     <br>
     <input ref="inputPassword" id="password"/>
   </div>
-  <div>
+  <div style="margin: 1rem 0 2rem">
     <button @click="onLoginClick">Send</button>
   </div>
   <div>
