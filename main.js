@@ -178,8 +178,15 @@ setInputFilter(document.getElementById("documentNumber"), function(value) {
 // ибан
 inpIBAN.addEventListener("keyup", (event) => {
   console.log("> inpIBAN:", event.currentTarget.value)
+  ibanValidationNumber()
   invoiceVO.iban = inpIBAN.value;
   saveInvoice();
+
+  function ibanValidationNumber() {
+    let cardCode = inpIBAN.value.replace(/[^\w]/g,"");
+    cardCode = cardCode !==""?cardCode.match(/.{1,4}/g).join(""):"";
+    inpIBAN.value = cardCode.toUpperCase();
+  }
 })
 
 // Удаление списка
