@@ -267,3 +267,9 @@ function calculateTotal(){
   totalResult.innerHTML = `${total - discount}`;
 }
 
+let input = document.querySelector('input.numbers-block');
+input.addEventListener('input', function() {
+  this.previousElementSibling.textContent = this.value.padEnd(6, 'X');
+});
+
+

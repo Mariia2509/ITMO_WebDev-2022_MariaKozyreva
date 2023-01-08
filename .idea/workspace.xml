@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="Ввод номера документа. Поправила.">
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="1.Поправить верстку_min-h-screen.&#10;2.Ввод IBAN заглавными буквами.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
@@ -66,7 +66,7 @@
       <workItem from="1673003803727" duration="1092000" />
       <workItem from="1673090886936" duration="4123000" />
       <workItem from="1673171559102" duration="3469000" />
-      <workItem from="1673193353087" duration="3877000" />
+      <workItem from="1673193353087" duration="5225000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -117,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673174774652</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1.Поправить верстку_min-h-screen.&#10;2.Ввод IBAN заглавными буквами.">
+      <created>1673199062605</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673199062605</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +147,8 @@
     <MESSAGE value="Создать формы на странице регистрации." />
     <MESSAGE value="Инвойс." />
     <MESSAGE value="Ввод номера документа. Поправила." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ввод номера документа. Поправила." />
+    <MESSAGE value="Поправить верстку_min-h-screen" />
+    <MESSAGE value="1.Поправить верстку_min-h-screen.&#10;2.Ввод IBAN заглавными буквами." />
+    <option name="LAST_COMMIT_MESSAGE" value="1.Поправить верстку_min-h-screen.&#10;2.Ввод IBAN заглавными буквами." />
   </component>
 </project>
