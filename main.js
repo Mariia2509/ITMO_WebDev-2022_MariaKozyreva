@@ -26,8 +26,6 @@ const discountInput = document.getElementById("discountInput");
 
 const textAdd = document.getElementById("textAdd");
 
-
-
 discountInput.addEventListener("keyup", () => {
   let discount = parseInt(discountInput.value);
   if (discount > 100) {
@@ -142,15 +140,41 @@ function closePopupContainer() {
   popupContainer.style.display = "none";
 }
 // Ввод номера документа
-inpDocumentNumber.addEventListener("keyup", (event) => {
-  console.log("> inpDocumentNumber:", event.currentTarget.value)
-  invoiceVO.id = inpDocumentNumber.value;
-  inpDocumentNumber.value = inpDocumentNumber.value.slice(0,4);
-  if (isStringNotNumberAndNotEmpty){
+function setInputFilter(inpDocumentNumber, inputFilter, errMsg) {
+  [ "input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout" ].forEach(function(event) {
+    inpDocumentNumber.addEventListener(event, function(e) {
+      if (inputFilter(this.value)) {
+        // Accepted value.
+        if ([ "keydown", "mousedown", "focusout" ].indexOf(e.type) >= 0){
+          this.classList.remove("input-error");
+          this.setCustomValidity("");
+        }
 
-  }
-    saveInvoice();
-})
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      }
+      else if (this.hasOwnProperty("oldValue")) {
+        // Rejected value: restore the previous one.
+        this.classList.add("input-error");
+        this.setCustomValidity(errMsg);
+        this.reportValidity();
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      }
+      else {
+        // Rejected value: nothing to restore.
+        this.value = "";
+      }
+    });
+  });
+}
+
+setInputFilter(document.getElementById("documentNumber"), function(value) {
+  return /^\d*$/.test(value); // Allow digits only, using a RegExp.
+}, "Only digits are allowed");
+
+
 // ибан
 inpIBAN.addEventListener("keyup", (event) => {
   console.log("> inpIBAN:", event.currentTarget.value)
@@ -236,16 +260,3 @@ function calculateTotal(){
   totalResult.innerHTML = `${total - discount}`;
 }
 
-function isStringNotNumberAndNotEmpty(value) {
-  const isValueString = typeof value === 'string';
-  const isValueNotNumber = isNaN(parseInt(value));
-
-  const result = isValueString && isValueNotNumber && value.length > 0;
-
-  console.log('> isStringNotNumberAndNotEmpty -> result', {
-    result,
-    isInputValueString: isValueString,
-    isInputValeNotNumber: isValueNotNumber,
-  });
-  return result;
-}
