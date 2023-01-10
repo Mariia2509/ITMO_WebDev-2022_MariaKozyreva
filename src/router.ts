@@ -11,15 +11,15 @@ const router = createRouter({
     },
     {
       path: Routes.BOOKS,
-      component: () => import('./pages/BooksListPage.vue'),
+      component: () => import('./pages/BooksPage.vue'),
     },
     {
       path: Routes.LOGIN,
-      component: () => import('./pages/UserLoginPage.vue'),
+      component: () => import('./pages/LoginPage.vue'),
     },
     {
       path: Routes.REGISTER,
-      component: () => import('./pages/UserRegisterPage.vue'),
+      component: () => import('./pages/RegisterPage.vue'),
     },
   ],
 });
