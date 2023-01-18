@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="save" />
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="save1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lessons/lesson-38-user-login-register" />
+        <entry key="$PROJECT_DIR$" value="lessons/lesson-43-ESLint" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,7 +35,6 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -60,9 +62,8 @@
       <workItem from="1672329073515" duration="3012000" />
       <workItem from="1672653146663" duration="577000" />
       <workItem from="1673003803727" duration="1092000" />
-      <workItem from="1673090886936" duration="4123000" />
-      <workItem from="1673171559102" duration="3469000" />
-      <workItem from="1673193353087" duration="5268000" />
+      <workItem from="1673539569871" duration="855000" />
+      <workItem from="1673972568778" duration="572000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -92,42 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672255961107</updated>
     </task>
-    <task id="LOCAL-00005" summary="Инвойс.">
-      <created>1673075390435</created>
+    <task id="LOCAL-00005" summary="save">
+      <created>1673366258916</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1673075390435</updated>
+      <updated>1673366258916</updated>
     </task>
-    <task id="LOCAL-00006" summary="Инвойс.">
-      <created>1673091069723</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1673091069723</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Ввод номера документа. Поправила.">
-      <created>1673174774652</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1673174774652</updated>
-    </task>
-    <task id="LOCAL-00008" summary="1.Поправить верстку_min-h-screen.&#10;2.Ввод IBAN заглавными буквами.">
-      <created>1673199062605</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1673199062605</updated>
-    </task>
-    <task id="LOCAL-00009" summary="save">
-      <created>1673200222174</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1673200222174</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,10 +121,6 @@
     <MESSAGE value="save_login-register" />
     <MESSAGE value="Создать формы логин/пароль." />
     <MESSAGE value="Создать формы на странице регистрации." />
-    <MESSAGE value="Инвойс." />
-    <MESSAGE value="Ввод номера документа. Поправила." />
-    <MESSAGE value="Поправить верстку_min-h-screen" />
-    <MESSAGE value="1.Поправить верстку_min-h-screen.&#10;2.Ввод IBAN заглавными буквами." />
     <MESSAGE value="save" />
     <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
