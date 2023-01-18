@@ -176,17 +176,31 @@ setInputFilter(document.getElementById("documentNumber"), function(value) {
 
 
 // ибан
-inpIBAN.addEventListener("keyup", (event) => {
+inpIBAN.addEventListener("input", (event) => {
   console.log("> inpIBAN:", event.currentTarget.value)
-  ibanValidationNumber()
-  invoiceVO.iban = inpIBAN.value;
-  saveInvoice();
-
-  function ibanValidationNumber() {
-    let cardCode = inpIBAN.value.replace(/[^\w]/g,"");
-    cardCode = cardCode !==""?cardCode.match(/.{1,4}/g).join(""):"";
-    inpIBAN.value = cardCode.toUpperCase();
+  const transformIban = value => {
+    let valid = false, result = ''
+    const filteredValue = value.replaceAll(/\W+/g, '').toUpperCase()
+    if (!filteredValue) return result
+    if (filteredValue.length <= 8) {
+      valid = filteredValue.match(/^[A-Z]+$/)
+    } else if (filteredValue.length <= 20) {
+      valid = filteredValue.match(/^[A-Z]{8}\d+$/)
+    }
+    if (valid) {
+      Array.from(filteredValue).forEach((char, index) => {
+        const increase = (index % 4) ? char : ` ${char}`
+        result += increase
+      })
+    } else {
+      result = invoiceVO.iban
+    }
+    return result
   }
+  const formattedValue = transformIban(event.currentTarget.value)
+  inpIBAN.value = formattedValue;
+  invoiceVO.iban = formattedValue;
+  saveInvoice();
 })
 
 // Удаление списка
