@@ -5,10 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite --mode debug",
+    "eslint": "eslint --ext .js,.ts,.vue src",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.4",
+    "@vue/apollo-composable": "^4.0.0-beta.1",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
     "pocketbase": "^0.9.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
@@ -31,7 +36,10 @@
   },
   "prettier": {
     "singleQuote": true,
+    "printWidth": 120,
     "trailingComma": "all",
+    "useTabs": false,
+    "tabWidth": 2,
     "endOfLine": "crlf"
   }
 }

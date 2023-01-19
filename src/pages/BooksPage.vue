@@ -1,115 +1,99 @@
 <script setup lang="ts">
-import { inject, ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useLazyQuery } from '@vue/apollo-composable';
+import UploadBooks from '../components/UploadBooks.vue';
+import BooksListHeader from '../components/books-list/BooksListHeader.vue';
+import BooksListControls from '../components/books-list/BooksListControls.vue';
+
+import gql from 'graphql-tag';
 
 const LIMIT = 10;
-
-const pb: any = inject('pb');
-
-const domInputFile = ref(null);
-const booksList = ref([]);
 const currentPageIndex = ref(0);
-const maxBooks = ref(0);
-const isLoading = ref(true);
+const {
+  result,
+  loading: isBooksLoading,
+  load,
+  fetchMore,
+} = useLazyQuery(
+  gql`
+    query GetBooks($limit: Int, $offset: Int) {
+      books(limit: $limit, offset: $offset) {
+        title
+      }
+      books_aggregate {
+        aggregate {
+          count(columns: id)
+        }
+      }
+    }
+  `,
+  { limit: LIMIT, offset: currentPageIndex.value },
+);
+
+const booksList = computed(() => result.value?.books || []);
+const maxBooks = computed(() => result.value?.books_aggregate.aggregate.count || 0);
+const maxPages = computed(() => Math.ceil(maxBooks.value / LIMIT));
+const pageIndex = computed(() => currentPageIndex.value + 1);
 
 const canRenderUpload = computed(() => {
-  const result = !isLoading.value && maxBooks.value == 0;
+  const result = !isBooksLoading.value && maxBooks.value == 0;
   console.log('> canRenderUpload:', result);
   return result;
 });
-const canRenderNextPageButton = computed(
-  () => currentPageIndex.value < Math.floor((maxBooks.value - 1) / LIMIT),
-);
-const loadBooks = async () =>
-  Promise.resolve()
-    .then(() => (isLoading.value = true))
-    .then(() => pb
-      .collection('books')
-      .getList(1, LIMIT, {})
-    ).then((result) => {
-      booksList.value = result.items;
-      isLoading.value = false;
-      maxBooks.value = result.totalItems;
-      console.log(canRenderUpload.value, maxBooks.value, result);
-  });
+const canRenderLoading = computed(() => isBooksLoading.value && maxBooks.value == 0);
 
-const getBookIndex = (index: number) =>
-  1 + index + currentPageIndex.value * LIMIT;
+const getBookIndex = (index: number) => 1 + index + currentPageIndex.value * LIMIT;
+const loadMoreBooks = () =>
+  fetchMore({
+    variables: { offset: currentPageIndex.value * LIMIT },
+    updateQuery: (previousQueryResult, { fetchMoreResult }) => {
+      console.log('> BooksPage -> loadMoreBooks -> updateQuery', fetchMoreResult);
+      if (!fetchMoreResult) return previousQueryResult;
+      return fetchMoreResult;
+    },
+  });
 
 const onPageNextClick = () => {
   currentPageIndex.value++;
-  loadBooks();
+  loadMoreBooks();
 };
 
 const onPagePrevClick = () => {
   currentPageIndex.value--;
-  loadBooks();
+  loadMoreBooks();
 };
 
-const onUploadClick = () => {
-  console.log('> onUploadClick');
-  const input = domInputFile.value! as HTMLInputElement;
-  input.onchange = () => {
-    const fileList = input.files as FileList;
-    const selectedFile = fileList[0];
-    console.log('selectedFile:', selectedFile);
-    const reader = new FileReader();
-    reader.onload = async () => {
-      const books = JSON.parse(reader.result! as string);
-      console.log('selectedFile:', books);
-      for (let book of books) {
-        console.log('> book', book);
-        await pb.collection('books').create(book);
-      }
-      reader.onload = null;
-    };
-    reader.readAsText(selectedFile);
-    input.onchange = null;
-  };
-  input.click();
+const onUploadComplete = () => {
+  console.log('> BooksPage -> onUploadComplete:');
+  fetchMore({});
 };
-
-pb.collection('books')
-  .subscribe('*',(change: any) => {
-    console.log('> change', change);
-    loadBooks();
-  });
 
 onMounted(() => {
   console.log('> BooksPage -> onMounted');
-  loadBooks();
+  load();
 });
 onUnmounted(() => {
-  pb.collection('books').unsubscribe();
+  // pb.collection('books').unsubscribe();
 });
 </script>
 
 <template>
-  <div v-if="canRenderUpload">
-    <input hidden ref="domInputFile" type="file" />
-    <button @click="onUploadClick">Upload</button>
-  </div>
-  <div v-else-if="isLoading">Loading...</div>
+  <UploadBooks v-if="canRenderUpload" @upload-complete="onUploadComplete" />
+  <div v-else-if="canRenderLoading">Loading...</div>
   <div v-else>
-    <h2>
-      Books, page <span>{{ currentPageIndex + 1 }}</span>
-    </h2>
-    <div style="margin: 2rem 0">
-      <button
-        v-if="currentPageIndex > 0"
-        @click="onPagePrevClick"
-        style="margin-right: 1rem"
-      >
-        Prev
-      </button>
-      <button v-if="canRenderNextPageButton" @click="onPageNextClick">
-        Next
-      </button>
+    <BooksListHeader :max-books="maxBooks" :page-index="pageIndex" />
+    <BooksListControls
+      :is-loading="isBooksLoading"
+      :max-pages="maxPages"
+      :page-index="currentPageIndex"
+      @next="onPageNextClick"
+      @prev="onPagePrevClick"
+      style="margin: 2rem 0"
+    />
+    <div v-if="!isBooksLoading" style="text-align: left; width: 400px">
+      <div v-for="(book, index) in booksList" :key="book.id">{{ getBookIndex(index) }}. {{ book.title }}</div>
     </div>
-    <div style="text-align: left; width: 400px">
-      <div v-for="(book, index) in booksList">
-        {{ getBookIndex(index) }}. {{ book.title }}
-      </div>
-    </div>
+    <div v-else>Page loading</div>
   </div>
 </template>
 
