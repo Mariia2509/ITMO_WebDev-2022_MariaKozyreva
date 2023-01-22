@@ -23,16 +23,29 @@ const isCurrentPageNotBooks = computed(() => {
     <div v-if="isUserAuthenticated">
       {{ userData!.name }}
       <div v-if="isCurrentPageNotBooks">
-        <RouterLink :to="Routes.BOOKS">Books</RouterLink>
+        <RouterLink :to="Routes.BOOKS">
+          Books
+        </RouterLink>
       </div>
       <div v-else>
-        <RouterLink :to="Routes.INDEX">Home</RouterLink>
+        <RouterLink :to="Routes.INDEX">
+          Home
+        </RouterLink>
+      </div>
+      <div>
+        <button @click="onLogout">
+          logout
+        </button>
       </div>
     </div>
     <div v-else-if="isCurrentPageNotLogin">
-      <RouterLink :to="Routes.LOGIN">Login</RouterLink>
+      <RouterLink :to="Routes.LOGIN">
+        Login
+      </RouterLink>
     </div>
-    <div v-else>You don't have access</div>
+    <div v-else>
+      You don't have access
+    </div>
   </header>
 </template>
 <style scoped></style>
