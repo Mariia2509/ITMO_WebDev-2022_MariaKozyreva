@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import Routes from '../consts/Routes';
 import { useRouter } from 'vue-router';
 
-const props: any = defineProps<{ userData?: any }>();
+const props: any = defineProps<{ userData?: any | null }>();
 const router = useRouter();
 
 const isUserAuthenticated = computed(() => !!props.userData);
@@ -21,7 +21,7 @@ const isCurrentPageNotBooks = computed(() => {
   <header style="width: 100%; padding: 1rem; background-color: lightgrey">
     <h2>Header</h2>
     <div v-if="isUserAuthenticated">
-      {{ userData.username }}
+      {{ userData!.name }}
       <div v-if="isCurrentPageNotBooks">
         <RouterLink :to="Routes.BOOKS">Books</RouterLink>
       </div>
