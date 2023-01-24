@@ -37,7 +37,7 @@ const handleLogin = async (data: any) => {
   onResult((queryResult) => {
     if (queryResult.data.users.length > 0) {
       isSuccess.value = true;
-      userModel!.setupUser(queryResult.data.users[0]);
+      userModel!.setupUserData(queryResult.data.users[0]);
     } else {
       errors.value.push('Email or password incorrect');
     }
@@ -46,26 +46,9 @@ const handleLogin = async (data: any) => {
     console.log(queryResult.networkStatus)
   });
   onError((error) => {
-    console.log(error.graphQLErrors)
-    console.log(error.networkError)
+    console.log('error', error.graphQLErrors)
+    console.log('error', error.networkError)
   })
-  // await pb
-  //   .collection('users')
-  //   .authWithPassword(data.username, data.password)
-  //   .then((result: any) => {
-  //     console.log('> handleLoginClick -> result:', result);
-  //     isSuccess.value = true;
-  //   })
-  //   .catch((e: any) => {
-  //     console.log('> handleLoginClick -> error:', e.data.data);
-  //     const data = e.data.data;
-  //     errors.value.push(e.toString());
-  //     let item, message;
-  //     for (item in data) {
-  //       message = `${item}: ${data[item].message}`;
-  //       errors.value.push(message);
-  //     }
-  //   });
 };
 </script>
 

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="логинизация пользователя через Hasura">
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="Добавить кнопку logout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +87,8 @@
       <workItem from="1674143142872" duration="4615000" />
       <workItem from="1674147877693" duration="5860000" />
       <workItem from="1674334410627" duration="709000" />
-      <workItem from="1674363178449" duration="3593000" />
+      <workItem from="1674363178449" duration="3645000" />
+      <workItem from="1674574033155" duration="302000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -153,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674363558974</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Добавить кнопку logout">
+      <created>1674370704660</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674370704660</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +185,7 @@
     <MESSAGE value="Добавили файл eslintrc.cjs" />
     <MESSAGE value="логинизация пользователя" />
     <MESSAGE value="логинизация пользователя через Hasura" />
-    <option name="LAST_COMMIT_MESSAGE" value="логинизация пользователя через Hasura" />
+    <MESSAGE value="Добавить кнопку logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавить кнопку logout" />
   </component>
 </project>
