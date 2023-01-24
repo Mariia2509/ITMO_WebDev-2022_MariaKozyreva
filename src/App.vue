@@ -27,10 +27,8 @@ const onMainHeaderLogout = () => {
 
 <template>
   <MainHeader :user-data="userData" @logout="onMainHeaderLogout" />
-  <RouterView v-slot="{ Component }">
-    <KeepAlive>
-      <Component :is="Component" />
-    </KeepAlive>
+  <RouterView v-slot="{ Component }" style="padding: 2rem;">
+    <Component :is="Component" />
   </RouterView>
 </template>
 
