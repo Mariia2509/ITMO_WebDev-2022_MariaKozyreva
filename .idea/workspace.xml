@@ -1,50 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="Lesson 47">
-      <change afterPath="$PROJECT_DIR$/.npmrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Components/Welcome.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pages/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ITMO_WebDev-2022_MariaKozyreva.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="Lesson 48">
+      <change afterPath="$PROJECT_DIR$/Pages/books.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apollo.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/vue.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegistrationForm.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UploadBooks.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books-list/BooksListControls.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books-list/BooksListHeader.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consts/Routes.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/apollo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UserModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/BooksPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/IndexPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LoginPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RegisterPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vite-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.node.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +47,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -134,7 +96,8 @@
       <workItem from="1674363178449" duration="3645000" />
       <workItem from="1674574033155" duration="3161000" />
       <workItem from="1674746409025" duration="4434000" />
-      <workItem from="1675000976055" duration="7321000" />
+      <workItem from="1675000976055" duration="7376000" />
+      <workItem from="1675024139524" duration="1707000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -241,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674758354650</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Lesson 48">
+      <created>1675014107392</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1675014107392</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +241,7 @@
     <MESSAGE value="Lesson 45" />
     <MESSAGE value="Lesson 46" />
     <MESSAGE value="Lesson 47" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 47" />
+    <MESSAGE value="Lesson 48" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 48" />
   </component>
 </project>
