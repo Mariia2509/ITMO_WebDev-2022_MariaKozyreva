@@ -5,9 +5,12 @@ export default defineNuxtConfig({
 
     },
 
+    modules: ['@anu-vue/nuxt', '@unocss/nuxt'],
+    css: ['@anu-vue/preset-theme-default/dist/style.css'],
+
     runtimeConfig: {
         public: {
-            DATA_API: "https:jsonplaceholder.typicode.com"
+            DATA_API: "https://jsonplaceholder.typicode.com"
         }
     }
 });

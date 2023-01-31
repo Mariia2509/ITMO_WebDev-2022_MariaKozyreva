@@ -1,6 +1,7 @@
 <template>
   <div>
    Nuxt Application
+    <slot name="navigation"/>
       <slot />
   </div>
 </template>

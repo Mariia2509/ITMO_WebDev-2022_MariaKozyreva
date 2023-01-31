@@ -6,7 +6,7 @@
     <NuxtLayout>
       Index Page
       <template #navigation>
-        <NuxtLink to="/books">Books</NuxtLink>
+        <NuxtLink to="/books"><ABtn variant="outline">Books</ABtn></NuxtLink>
       </template>
     </NuxtLayout>
   </div>
