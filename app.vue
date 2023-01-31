@@ -4,6 +4,7 @@ const books = useBooks();
 
 const { data: userData, pending: isUserLoading } = user.getUser();
 const { pending: isBooksLoading } = books.getAll();
+const data = await useFetch('/api/users');
 
 console.log('App -> Loading:', { isUserLoading });
 </script>

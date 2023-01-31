@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="save">
-      <change afterPath="$PROJECT_DIR$/uno.config.js" afterDir="false" />
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="Добавили стили и переходы">
+      <change afterPath="$PROJECT_DIR$/Server/api/users.books.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/api/users.get.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/middleware/postgres.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/middleware/prisma.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
@@ -18,9 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -55,7 +58,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Mariy/Desktop/HomeWork/HomeWork1-HTML",
+    "last_opened_file_path": "C:/Users/Mariy/Documents/ITMO_WebDev-2022_MariaKozyreva/Server/middleware",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,6 +72,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\Server\middleware" />
+      <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\Server\api" />
       <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -107,7 +112,7 @@
       <workItem from="1675024139524" duration="1758000" />
       <workItem from="1675072880906" duration="5876000" />
       <workItem from="1675180211458" duration="2329000" />
-      <workItem from="1675182595604" duration="2306000" />
+      <workItem from="1675182595604" duration="7813000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -256,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675183446112</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Добавили стили и переходы">
+      <created>1675185093805</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1675185093805</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +300,7 @@
     <MESSAGE value="Lesson 48" />
     <MESSAGE value="save1" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="Добавили стили и переходы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавили стили и переходы" />
   </component>
 </project>
