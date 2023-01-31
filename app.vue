@@ -1,18 +1,19 @@
-<script setup>
-const setting useRuntimeConfig();
-await useFetch(`${setting.DATA_URL}/https://jsonplaceholder.typicode.com/users/1`)
+<script setup lang="ts">
+const user = useUser();
+const books = useBooks();
+
+const { data: userData, pending: isUserLoading } = user.getUser();
+const { pending: isBooksLoading } = books.getAll();
+
+console.log('App -> Loading:', { isUserLoading });
 </script>
-
-
-
-
 <template>
-  <NuxtLayout>
+  <div v-if="isBooksLoading && isUserLoading">Loading...</div>
+  <div v-else>
+    <div>User {{ userData.name }}</div>
     <NuxtPage :transition="{
-          name: 'slide-left',
-          mode: 'out-in'
-              }" />
-
-  </NuxtLayout>
+      name: 'slide-left',
+      mode: 'out-in'
+    }" />
+  </div>
 </template>
-

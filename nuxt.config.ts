@@ -5,17 +5,9 @@ export default defineNuxtConfig({
 
     },
 
-        runtimeConfig: {
-            public:
-            DATA_API: https:jsonplaceholder.typicode.com
-            }
-        },
-            app: {
-            pageTransition: { name: 'page', mode: 'out-in' }
-},
-})
-
-
-
-    })
-}
+    runtimeConfig: {
+        public: {
+            DATA_API: "https:jsonplaceholder.typicode.com"
+        }
+    }
+});
