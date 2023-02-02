@@ -1,17 +1,10 @@
 <template>
   <div>
-   Nuxt Application
-    <slot name="navigation"/>
-      <slot />
+    Header
+    <div>
+      <div>Menu</div>
+      <slot name="navigation"/>
+    </div>
+    <slot />
   </div>
 </template>
-
-<script>
-export default {
-  name: "default"
-}
-</script>
-
-<style scoped>
-
-</style>

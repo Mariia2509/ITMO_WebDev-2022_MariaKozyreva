@@ -1,16 +1,11 @@
-// import pg from 'pg';
-// delete pg.native;
-
-// export default defineEventHandler((event) => {
-//     const res = await event.context.pg.query('SELECT * FROM users');
-//     return {
-//         count: results.rowCount;
-//         user: results.rows
-//     }
-// })
-
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
 export default defineEventHandler(async (event) => {
-    return(event.context.prisma as prismaClinet).books.findMany();
-
+  // const results = await event.context.pg.query('SELECT * FROM users');
+  // console.log('> api -> get | users: resuls', results.rows);
+  // return {
+  //   count: results.rowCount,
+  //   users: results.rows
+  // }
+  return (event.context.prisma as PrismaClient).users.findMany();
+})

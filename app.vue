@@ -4,9 +4,9 @@ const books = useBooks();
 
 const { data: userData, pending: isUserLoading } = user.getUser();
 const { pending: isBooksLoading } = books.getAll();
-const data = await useFetch('/api/users');
+const { data: users } = useFetch('/api/users');
 
-console.log('App -> Loading:', { isUserLoading });
+console.log('App -> Loading:', { users: users.value, isUserLoading });
 </script>
 <template>
   <div v-if="isBooksLoading && isUserLoading">Loading...</div>

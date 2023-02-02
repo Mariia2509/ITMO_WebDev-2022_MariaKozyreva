@@ -1,8 +1,9 @@
-const getStateOrFetchWhenAbsent = (key: string, path: string): any => {
+const getStateOrFetchWhenAbsent = (key: string, path: string, useEnvSettingsAPI = true): any => {
   const state = useState(key);
   if (!state.value) {
     const setting = useRuntimeConfig();
-    state.value = useFetch(`${setting.DATA_API}${path}`);
+    const url = useEnvSettingsAPI ? `${setting.DATA_API}${path}` : path;
+    state.value = useFetch(url);
   }
   return state.value;
 }
@@ -15,6 +16,6 @@ export const useUser = () => ({
 
 export const useBooks = () => ({
   getAll: (): any => {
-    return getStateOrFetchWhenAbsent('books', '/comments');
+    return getStateOrFetchWhenAbsent('books', '/api/books', false);
   }
 });
