@@ -1,31 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="prisma">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/couchDB/dbdata/_dbs.couch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/couchDB/dbdata/_nodes.couch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layouts/custom.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/books/[bookId].vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UploadBooks.vue" afterDir="false" />
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="save">
+      <change afterPath="$PROJECT_DIR$/nginx/hosts/app.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/api/users.books.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Server/api/books.get.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/api/users.get.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Server/api/users.get.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/middleware/postgres.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Server/middleware/postgres.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/middleware/prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Server/middleware/prisma.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Welcome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Welcome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composables/states.ts" beforeDir="false" afterPath="$PROJECT_DIR$/composables/states.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/books/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uno.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/uno.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lessons/lesson-48-nuxt" />
+        <entry key="$PROJECT_DIR$" value="lessons/lesson-49-nuxt2" />
         <entry key="$PROJECT_DIR$/ITMO_WebDev_2022_VladimirMinkin" value="lessons/lesson-44-login-with-hasura" />
       </map>
     </option>
@@ -94,6 +73,7 @@
       <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\nginx\hosts" />
       <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\pages\books" />
     </key>
   </component>
@@ -131,7 +111,7 @@
       <workItem from="1675180211458" duration="2329000" />
       <workItem from="1675182595604" duration="8278000" />
       <workItem from="1675191005036" duration="902000" />
-      <workItem from="1675352234979" duration="7647000" />
+      <workItem from="1675352234979" duration="11506000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -294,11 +274,28 @@
       <option name="project" value="LOCAL" />
       <updated>1675190545337</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="запустили приложение на Докере&#10;подгрузили базу данных">
+      <created>1675360532735</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1675360532735</updated>
+    </task>
+    <task id="LOCAL-00025" summary="save">
+      <created>1675360606457</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1675360606457</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -325,9 +322,10 @@
     <MESSAGE value="Lesson 47" />
     <MESSAGE value="Lesson 48" />
     <MESSAGE value="save1" />
-    <MESSAGE value="save" />
     <MESSAGE value="Добавили стили и переходы" />
     <MESSAGE value="prisma" />
-    <option name="LAST_COMMIT_MESSAGE" value="prisma" />
+    <MESSAGE value="запустили приложение на Докере&#10;подгрузили базу данных" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
 </project>
