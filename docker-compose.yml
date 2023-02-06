@@ -3,18 +3,19 @@ services:
   app:
     build: .
     container_name: app
-    restart: always
     ports:
-      - "80:3003"
+      - "3003:3003"
     environment:
       - PORT=3003
-      - DATABASE_URL=postgres://maria:xsm3FiDNfze1@twilight-paper-812693.us-east-2.aws.neon.tech/neondb?options=project%3Dtwilight-paper-812693&sslmode=require
-#  nginx:
-#      image: nginx
-#      container_name: nginx
-#      restart: always
-#      ports:
-#        - "8088:80"
-#      volumes:
-#        - ./nginx/hosts:/etc/nginx/conf.d
+      - DATABASE_URL=
 
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"    
+    volumes:
+      - ./nginx/hosts:/etc/nginx/conf.d
+    links:
+      - app

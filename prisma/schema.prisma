@@ -8,15 +8,23 @@ datasource db {
 }
 
 model books {
-  id     Int    @id @default(autoincrement())
-  title  String
-  author String
+  id         Int      @id @default(autoincrement())
+  year       Int
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  title      String
+  pages      Int
+  link       String
+  language   String
+  country    String
+  author     String
+  imageLink  String
 }
 
 model user_books {
   id      Int    @id @default(autoincrement())
-  book_id Int
   user_id String @db.Uuid
+  book_id Int
 }
 
 model users {

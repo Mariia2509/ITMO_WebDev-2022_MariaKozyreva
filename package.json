@@ -3,17 +3,18 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "prisma": "npx prisma generate",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "main": "",
   "devDependencies": {
     "@anu-vue/preset-theme-default": "^0.12.0",
     "@iconify-json/bx": "^1.1.5",
     "@unocss/nuxt": "^0.49.1",
     "anu-vue": "^0.12.0",
     "nuxt": "^3.1.0",
-    "pg": "^8.9.0",
     "prisma": "^4.9.0",
     "unocss": "^0.49.1"
   },
