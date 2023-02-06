@@ -1,18 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="save">
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+    <list default="true" id="8f9c483b-a9d1-4814-9756-aabc6a528795" name="Changes" comment="nginx and docker compose">
+      <change afterPath="$PROJECT_DIR$/cypress.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AppProductList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HelloWorld.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TheWelcome.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/WelcomeItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/__tests__/HelloWorld.cy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/IconCommunity.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/IconDocumentation.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/IconEcosystem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/IconSupport.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/IconTooling.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data-products.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stores/counter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/AboutView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/HomeView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Product.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.cypress-ct.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/couchDB/dbdata/_dbs.couch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/couchDB/dbdata/_nodes.couch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/hosts/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/hosts/app.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.npmrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/api/books.get.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/api/users.get.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/middleware/postgres.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/middleware/prisma.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Welcome.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composables/states.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/custom.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/hosts/app.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/books/[bookId].vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/books/books.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/books/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UploadBooks.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uno.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/uno.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,16 +67,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lessons/lesson-49-nuxt2" />
+        <entry key="$PROJECT_DIR$" value="lessons/lesson-50-nuxt-docker" />
         <entry key="$PROJECT_DIR$/ITMO_WebDev_2022_VladimirMinkin" value="lessons/lesson-44-login-with-hasura" />
       </map>
     </option>
@@ -52,28 +97,28 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.13.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/nodejs/node.exe&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;C:/Program Files/nodejs/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "18.13.0",
+    "javascript.nodejs.core.library.typings.version": "18.11.18",
+    "last_opened_file_path": "C:/Users/Mariy/Documents/ITMO_WebDev-2022_MariaKozyreva",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_interpreter_path": "C:/Program Files/nodejs/node",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "ts.external.directory.path": "C:\\Users\\Mariy\\Documents\\ITMO_WebDev-2022_MariaKozyreva\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\Server\middleware" />
@@ -81,6 +126,7 @@
       <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\src\views" />
       <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\nginx\hosts" />
       <recent name="C:\Users\Mariy\Documents\ITMO_WebDev-2022_MariaKozyreva\pages\books" />
     </key>
@@ -120,7 +166,8 @@
       <workItem from="1675182595604" duration="8278000" />
       <workItem from="1675191005036" duration="902000" />
       <workItem from="1675352234979" duration="11542000" />
-      <workItem from="1675661708834" duration="1967000" />
+      <workItem from="1675661708834" duration="3026000" />
+      <workItem from="1675683872044" duration="8111000" />
     </task>
     <task id="LOCAL-00001" summary="save_login-register">
       <created>1672172781118</created>
@@ -304,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675364255709</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="nginx and docker compose">
+      <created>1675665314486</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1675665314486</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,6 +396,19 @@
     <MESSAGE value="prisma" />
     <MESSAGE value="запустили приложение на Докере&#10;подгрузили базу данных" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="nginx and docker compose" />
+    <option name="LAST_COMMIT_MESSAGE" value="nginx and docker compose" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/AppProductList.vue</url>
+          <line>12</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
